@@ -1,0 +1,3 @@
+<template>
+  <svg class="w-4 h-4" data-name="Layer 1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M64 32a32 32 0 1 0-32 32 32 32 0 0 0 32-32Zm-5.57 0A26.43 26.43 0 1 1 32 5.57 26.45 26.45 0 0 1 58.43 32Z" data-name="<Compound Path>" fill="currentColor" class="fill-000000"></path><path d="M28.52 12.19h6.96v6.96h-6.96zM35.48 44.39v-20.5h-9.83v6.96h3.23v13.54h-3.23v6.96h12.7v-6.96h-2.87z" fill="currentColor" class="fill-000000"></path></svg>
+</template>
