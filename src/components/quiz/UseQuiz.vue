@@ -10,7 +10,7 @@
       </h2>
     </Widget>
     <section class="grid grid-cols-2 gap-2">
-      <AnswerButton @click="addAnswer(answer)" :class="{'border-blue-300': currentAnswer && currentAnswer == answer}" v-for="answer in currentQuestion.answers" :key="answer">
+      <AnswerButton @click="addAnswer(answer)" :class="{'border-blue-300': currentAnswer == answer}" v-for="answer in currentQuestion.answers" :key="answer">
         {{answer}}
       </AnswerButton>
     </section>
