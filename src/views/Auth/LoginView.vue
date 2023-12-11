@@ -73,6 +73,7 @@ export default defineComponent({
       console.log(res && res.status == 200 && Object.keys(res.data).includes('authUser'))
       if(res && res.status == 200 && Object.keys(res.data).includes('authUser')) {
         this.authStore.user = res.data['authUser'] as User
+        if(Object.keys(res.data).includes('session')) window.localStorage.setItem('session', res.data['session'])
       }
       this.processing = false
       this.$router.push('/')
