@@ -47,11 +47,11 @@ export default defineComponent({
         })
       } catch(e: unknown) {
         if(e instanceof AxiosError) {
-          if(e.response.data?.error?.message) {
+          if(e.response && e.response.data?.error?.message) {
             this.$toast.error(e.response.data.error.message)
             this.processing = false
             return
-          } else if(Object.keys(e.response.data).includes('errors')) {
+          } else if(e.response && Object.keys(e.response.data).includes('errors')) {
             this.processing = false
             return
           }

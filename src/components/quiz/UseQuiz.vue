@@ -1,16 +1,16 @@
 <template>
-  <QuestionsCounter :count="questions?.length" :completed="dataAnswers.length" />
+  <QuestionsCounter :count="questions?.length || 0" :completed="dataAnswers.length" />
   <GuestLayout>
     <Widget>
       <img alt="Question Image" class="rounded-xl mb-2"
            v-if="currentQuestion.image" :src="currentQuestion.image"
       />
       <h2 class="text-lg md:text-2xl fontFredoka">
-        {{ currentQuestion?.question }}
+        {{ currentQuestion.question }}
       </h2>
     </Widget>
     <section class="grid grid-cols-2 gap-2">
-      <AnswerButton @click="addAnswer(answer)" :class="{'border-blue-300': currentAnswer == answer}" v-for="answer in currentQuestion.answers" :key="answer">
+      <AnswerButton @click="addAnswer(answer)" :class="{'border-blue-300': currentAnswer && currentAnswer == answer}" v-for="answer in currentQuestion.answers" :key="answer">
         {{answer}}
       </AnswerButton>
     </section>
@@ -29,7 +29,8 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType} from "vue";
+import {defineComponent} from "vue";
+import type {PropType} from 'vue'
 import ButtonBluish from "@/components/buttons/ButtonBluish.vue";
 import ButtonPinkle from "@/components/buttons/ButtonPinkle.vue";
 import QuestionsCounter from "@/components/quiz/QuestionsCounter.vue";
@@ -44,12 +45,17 @@ export default defineComponent({
   data() {
     return {
       state: 0,
-      dataAnswers: [],
+      dataAnswers: [] as Array<string>,
       showSubmitModal: false,
     };
   },
   computed: {
     currentQuestion() {
+      if(this.questions == undefined || this.questions?.length && this.questions.length < this.state+1) return {
+        question: 'Something wrong happened',
+        image: undefined,
+        answers: [],
+      }
       return this.questions[this.state]
     },
     currentAnswer() {
@@ -57,7 +63,8 @@ export default defineComponent({
       return this.dataAnswers[this.state]
     },
     canStartNext() {
-      return this.state <= this.questions?.length
+      if(!this.questions) return false
+      return this.state <= this.questions.length
     }
   },
   components: {AreYouSureModal, ButtonGreenish, AnswerButton, GuestLayout, Widget, QuestionsCounter, ButtonPinkle, ButtonBluish},
@@ -66,7 +73,7 @@ export default defineComponent({
   },
   methods: {
     addAnswer(answer: string) {
-      if(this.dataAnswers.length < this.state + 1) this.dataAnswers.push(answer)
+      if(this.dataAnswers.length < this.state + 1) this.dataAnswers.push(answer as never)
       else if(this.dataAnswers[this.state] != answer) {
         this.dataAnswers[this.state] = answer
       } else {
