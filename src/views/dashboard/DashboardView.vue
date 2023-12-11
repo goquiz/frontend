@@ -10,21 +10,15 @@
       <ButtonPinkle class="mt-3">{{$t('All')}}</ButtonPinkle>
     </Widget>
   </AuthLayout>
-
-  <Modal :show="showModal" @cancel="showModal = false">
-    <h3 class="text-3xl fontFredoka">Create a Quiz</h3>
-    <SimpleInput class="my-3" placeholder="Your quiz's name" />
-    <ButtonBluish>Create</ButtonBluish>
-  </Modal>
+  <NewQuizModal :show="showModal" @close="showModal = false" />
 </template>
 <script setup lang="ts">
 import AuthLayout from "@/components/layouts/AuthLayout.vue";
 import Widget from "@/components/Widget.vue";
 import ButtonBluish from "@/components/buttons/ButtonBluish.vue";
 import ButtonPinkle from "@/components/buttons/ButtonPinkle.vue";
-import Modal from "@/components/modal/Modal.vue";
-import SimpleInput from "@/components/inputs/SimpleInput.vue";
 import {ref} from "vue";
+import NewQuizModal from "@/components/dash/NewQuizModal.vue";
 
 const showModal = ref(false)
 </script>
