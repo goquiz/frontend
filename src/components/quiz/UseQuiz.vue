@@ -59,7 +59,6 @@ export default defineComponent({
       return this.questions[this.state]
     },
     currentAnswer() {
-      if(this.dataAnswers.length < this.state + 1) return false
       return this.dataAnswers[this.state]
     },
     canStartNext() {
