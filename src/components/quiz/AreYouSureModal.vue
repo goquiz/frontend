@@ -1,6 +1,6 @@
 <template>
   <Modal :show="show" @close="close">
-    <h2 class="text-2xl fontFredoka">{{$t('Are you sure you want to submit?')}}</h2>
+    <h2 class="text-2xl fontMitr">{{$t('Are you sure you want to submit?')}}</h2>
     <div class="mt-3 flex items-center space-x-3">
         <ButtonGreenish @click="submit">{{$t('YEAH!')}}</ButtonGreenish>
     </div>

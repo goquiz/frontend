@@ -1,6 +1,6 @@
 <template>
-   <nav class="fixed top-0 z-30 w-full">
-     <div class="w-full px-3 py-3 fontPoppins bg-widget max-w-md mx-auto md:my-2 md:rounded-xl flex items-center">
+   <nav class="fixed top-0 z-30 w-full px-2">
+     <div class="w-full px-3 py-3 fontPoppins bg-widget max-w-md mx-auto my-2 rounded-xl flex items-center">
        <img
            src="https://mrtn.vip/resources/img/nav.c852416e.jpg"
            alt="Profile Image"

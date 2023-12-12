@@ -1,6 +1,6 @@
 <template>
   <Modal :show="show" @close="close">
-    <h2 class="text-2xl fontFredoka mb-2">{{$t('New Quiz')}}</h2>
+    <h2 class="text-2xl fontMitr mb-2">{{$t('New Quiz')}}</h2>
     <form v-on:submit.prevent>
       <SimpleInput :disabled="processing" v-model.lazy="name" placeholder="Your Quiz's name" />
       <ButtonBluish :isLoading="processing" @click="submit" class="mt-2">Create</ButtonBluish>
@@ -62,7 +62,7 @@ export default defineComponent({
       }
       if(res.status == 200 && Object.keys(res.data).includes('quiz_id') && res.data['quiz_id'] !== 0) {
         this.processing = false
-        this.$router.push('/dashboard/quizzes/' + res.data['quiz_id'] + '/questions')
+        this.$router.push('/Dashboard/quizzes/' + res.data['quiz_id'] + '/questions')
         this.close()
         return
       }

@@ -1,10 +1,12 @@
 import HomeView from '@/views/HomeView.vue'
 import adamsecu from "@/router/adamsecu";
 import JoinView from "@/views/JoinView.vue";
-import DashboardView from "@/views/dashboard/DashboardView.vue";
+import DashboardView from "@/views/Dashboard/DashboardView.vue";
 import AboutView from "@/views/AboutView.vue";
-import EditQuizQuestions from "@/views/dashboard/EditQuizQuestions.vue";
+import EditQuizQuestions from "@/views/Dashboard/EditQuizQuestions.vue";
 import PlayQuiz from "@/views/Play/PlayQuiz.vue";
+import MyQuizzes from "@/views/Dashboard/MyQuizzes.vue";
+import BeforePlay from "@/views/Play/BeforePlay.vue";
 
 export default [
   {
@@ -24,6 +26,14 @@ export default [
     }
   },
   {
+    path: '/join/:id',
+    name: 'join.id',
+    component: BeforePlay,
+    meta: {
+      auth: adamsecu.ACCESS_LOGIN
+    }
+  },
+  {
     path: '/dashboard',
     name: 'dashboard',
     component: DashboardView,
@@ -32,8 +42,16 @@ export default [
     }
   },
   {
+    path: '/dashboard/quizzes',
+    name: 'dashboard.quizzes',
+    component: MyQuizzes,
+    meta: {
+      auth: adamsecu.ACCESS_LOGIN
+    }
+  },
+  {
     path: '/dashboard/quizzes/:id/questions',
-    name: 'dashboard',
+    name: 'dashboard.quizzes.questions',
     component: EditQuizQuestions,
     meta: {
       auth: adamsecu.ACCESS_LOGIN

@@ -1,12 +1,12 @@
 <template>
   <AuthLayout>
    <Widget class="!text-left">
-     <h3 class="fontFredoka text-3xl">{{$t('My Quizzes')}}</h3>
-     <ButtonBluish class="mt-3">{{$t('All')}}</ButtonBluish>
+     <h3 class="fontMitr text-3xl">{{$t('My Quizzes')}}</h3>
+     <ButtonBluish to="/dashboard/quizzes" class="mt-3">{{$t('All')}}</ButtonBluish>
      <ButtonBluish @click="showModal = true" class="mt-3">{{$t('Create new')}}</ButtonBluish>
    </Widget>
     <Widget class="!text-left">
-      <h3 class="fontFredoka text-3xl">{{$t('Completed Quizzes')}}</h3>
+      <h3 class="fontMitr text-3xl">{{$t('Completed Quizzes')}}</h3>
       <ButtonPinkle class="mt-3">{{$t('All')}}</ButtonPinkle>
     </Widget>
   </AuthLayout>

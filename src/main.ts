@@ -31,5 +31,6 @@ app.use(VueTippy, {
 app.config.globalProperties.$toast = useToast()
 app.config.globalProperties.api_route = routePath
 app.config.globalProperties.$http = axios
+app.config.globalProperties.$isLoading = true
 
 app.mount('#app')
