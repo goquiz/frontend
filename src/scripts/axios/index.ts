@@ -12,7 +12,7 @@ instance.interceptors.request.use(
         const requestLoader = useRequestLoaderStore()
         requestLoader.update(1) // 1 means request is started
         config.headers['X-Frontend-Client'] = "Vue3/web"
-        config.headers.Authorization = 'Bearer e917f9a2-d1f6-4bab-8074-eaad9a3ebe4b'
+        config.headers.Authorization = window.localStorage.getItem('session')
         return config
     },
     (error) => {
