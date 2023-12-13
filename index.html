@@ -9,7 +9,7 @@
   <body class="bg-main-from bg-gradient-to-bl from-main-from to-main-to text-white fontPoppins">
     <script>
         if(!window.config) window.config = {
-            API_URL: "https://api-quiz.mrtn.vip/api",
+            API_URL: (['localhost','127.0.0.1'].includes(window.location.hostname) ? 'http://localhost:3000/api' : 'https://api-quiz.mrtn.vip/api'),
         }
     </script>
     <div id="app"></div>
