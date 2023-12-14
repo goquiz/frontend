@@ -12,6 +12,9 @@ export default defineComponent({
   },
   components: {
     BottomLinks
+  },
+  props: {
+    flex: Boolean,
   }
 })
 </script>
@@ -22,7 +25,7 @@ export default defineComponent({
       <li class="opacity-20" :class="randomClass()" v-for="i in 10" :key="i"></li>
     </ul>
   </div>
-  <div class="flex h-screen overflow-hidden blurred">
+  <div class="h-screen overflow-hidden blurred" :class="{'flex': flex}">
     <slot/>
   </div>
   <BottomLinks/>

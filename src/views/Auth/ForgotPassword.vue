@@ -2,8 +2,8 @@
   <GuestLayout>
     <h1 class="text-4xl fontMitr">Forgot password?</h1>
     <hr class="my-5 border-none h-2 bg-gradient-to-r from-pink-400 via-magenta-400 to-violet-500 rounded" />
-    <div class="my-3">
-      <AuthInputComponent :placeholder="$t('Username or email address')" class="my-2" />
+    <div class="my-2">
+      <AuthInputComponent :placeholder="$t('Username or email address')" class="my-1" />
     </div>
     <ButtonPinkle>
       {{$t('Reset')}}

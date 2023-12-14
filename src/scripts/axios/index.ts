@@ -21,11 +21,11 @@ instance.interceptors.request.use(
 )
 
 instance.interceptors.response.use(
-    (config) => {
-        return config
+    (res) => {
+        return Promise.resolve(res)
     },
-    (config) => {
-        return config
+    (res) => {
+        return Promise.reject(res)
     }
 )
 

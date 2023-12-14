@@ -1,5 +1,5 @@
 <template>
-  <UserWidget/>
+  <UserWidget class="fixed"/>
   <GuestLayout>
     <slot/>
   </GuestLayout>

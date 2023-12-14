@@ -4,6 +4,7 @@ const routes: {[index: string]: string} = {
     'auth.login': '/login',
     'auth.register': '/register',
     'auth.me': '/me',
+    'quiz.all': '/quiz',
     'quiz.create': '/quiz',
 }
 

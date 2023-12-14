@@ -9,13 +9,6 @@
 </template>
 <script setup lang="ts">
 import ButtonGreenish from "@/components/buttons/ButtonGreenish.vue";
-import {useAuthStore} from "@/stores/auth";
-import {computed} from "vue";
 import ButtonPinkle from "@/components/buttons/ButtonPinkle.vue";
-import Separator from "@/components/Separator.vue";
 import Widget from "@/components/Widget.vue";
-
-const auth = useAuthStore()
-
-const username = computed(() => auth.user?.username as string)
 </script>

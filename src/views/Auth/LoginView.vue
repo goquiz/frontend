@@ -5,7 +5,9 @@
     <form v-on:submit.prevent>
       <div class="my-2">
         <AuthInputComponent :disabled="processing" v-model="username" :placeholder="$t('Username')" class="my-1" />
+        <InputError v-if="errors.username" :error="errors.username" />
         <AuthInputComponent :disabled="processing" v-model="password" :placeholder="$t('Password')" type="password" class="my-1" />
+        <InputError v-if="errors.password" :error="errors.password" />
       </div>
       <ButtonPinkle :isLoading="processing" @click="submit">
         {{$t('Login')}}
@@ -29,6 +31,10 @@ import {useAuthStore} from "@/stores/auth";
 import type {AxiosResponse} from "axios";
 import type {User} from "@/types/user";
 import {AxiosError} from "axios";
+import InputError from "@/components/inputs/InputError.vue";
+import translator from "@/scripts/errorTranslator";
+import type {TInputError} from "@/scripts/errorTranslator";
+import simpleMessageHelper from "@/scripts/errorTranslator/simpleMessageHelper";
 
 export default defineComponent({
   setup() {
@@ -41,9 +47,11 @@ export default defineComponent({
         username: '',
         password: '',
         processing: false,
+        errors: {} as TInputError,
       }
   },
   components: {
+    InputError,
     GuestLayout,
     ButtonPinkle,
     AuthInputComponent,
@@ -60,12 +68,15 @@ export default defineComponent({
           password: this.password
         })
       } catch(e: unknown) {
-        if(e instanceof AxiosError) {
-          if(e.response?.data && Object.keys(e.response.data).includes('error')) {
-            if(Object.keys(e.response.data['error']).includes('message')) this.$toast.error(e.response.data['error']['message'])
+        console.log(e)
+        if(e instanceof AxiosError && e.response) {
+          simpleMessageHelper(e)
+          if(Object.keys(e.response.data).includes('errors')) {
+            console.log(translator(e.response.data['errors']))
+            this.errors = translator(e.response.data['errors'])
           }
         } else {
-          console.log(e)
+          this.$toast.error(this.$t('errors.unknown'))
         }
         this.processing = false
         return

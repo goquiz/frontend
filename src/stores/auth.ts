@@ -24,6 +24,6 @@ export const useAuthStore = defineStore('auth', {
             if(res && res.status == 200 && Object.keys(res.data).includes('authUser') && res.data['authUser'] != null) {
                 this.user = res.data['authUser'] as User
             }
-        }
+        },
     }
 })
