@@ -16,6 +16,9 @@
          <button class="transition duration-150 p-3 bg-main-from hover:bg-main-to rounded-xl">
            <Settings/>
          </button>
+         <button class="ml-2 transition duration-150 p-3 bg-main-from hover:bg-main-to rounded-xl">
+           <Menu/>
+         </button>
        </div>
      </div>
    </nav>
@@ -24,6 +27,7 @@
 import Settings from "@/components/icons/Settings.vue";
 import {useAuthStore} from "@/stores/auth";
 import {computed} from "vue";
+import Menu from "@/components/icons/Menu.vue";
 
 const auth = useAuthStore()
 const username = computed(() => auth.user?.username || 'Unknown')

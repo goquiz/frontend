@@ -2,8 +2,8 @@
   <Modal :show="show" @close="close">
     <h2 class="text-2xl fontMitr mb-2">{{$t('New Quiz')}}</h2>
     <form v-on:submit.prevent>
-      <SimpleInput :disabled="processing" v-model.lazy="name" placeholder="Your Quiz's name" />
-      <ButtonBluish :isLoading="processing" @click="submit" class="mt-2">Create</ButtonBluish>
+      <SimpleInput :disabled="processing" v-model.lazy="name" :placeholder="$t('Your Quiz\'s name')" />
+      <ButtonBluish :isLoading="processing" @click="submit" class="mt-2">{{$t('Create')}}</ButtonBluish>
     </form>
   </Modal>
 </template>
