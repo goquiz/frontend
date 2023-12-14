@@ -1,12 +1,12 @@
 <template>
   <Modal :show="show" @close="close">
-    <h2 class="text-2xl fontMitr mb-3">{{ $t('Customize quiz') }}</h2>
+    <h2 class="text-2xl fontMitr mb-3">{{ $t('Your Quiz\'s name') }}</h2>
     <form v-on:submit.prevent>
-      <SimpleInput :value="quiz.name" />
-      <ButtonBluish class="mt-2">Save</ButtonBluish>
+      <SimpleInput :placeholder="$t('Quiz\'s name')" :value="quiz.name" />
+      <ButtonBluish class="mt-2">{{$t('Save')}}</ButtonBluish>
     </form>
-    <p class="mt-2 mb-1 text-red-400 text-left">Danger Zone</p>
-    <ButtonDanger>Delete</ButtonDanger>
+    <p class="mt-2 mb-1 text-red-400 text-left">{{$t('Danger Zone')}}</p>
+    <ButtonDanger>{{$t('Delete')}}</ButtonDanger>
   </Modal>
 </template>
 <script setup lang="ts">

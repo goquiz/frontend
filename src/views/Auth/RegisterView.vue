@@ -74,7 +74,7 @@ export default defineComponent({
             this.errors = translator(e.response.data['errors'])
           }
         } else {
-          this.$toast.error(this.$t('errors.unknown'))
+          this.$toast.error(this.$t('error.unknown'))
         }
         this.processing = false
         return
