@@ -1,8 +1,8 @@
 <template>
   <div v-if="show" class="fixed top-0 left-0 w-full h-screen bg-gray-800 opacity-60"></div>
   <transition name="pop" appear>
-    <div v-if="show" class="h-screen w-full flex fixed top-0 left-0 z-50">
-      <div class="my-auto w-full">
+    <div v-if="show" class="h-screen w-full flex fixed top-0 left-0">
+      <div class="my-auto w-full px-2 z-50">
         <div class="relative bg-widget rounded-2xl shadow max-w-sm mx-auto">
           <button type="button" class="transition duration-150 absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-main-from rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" @click="close">
             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">

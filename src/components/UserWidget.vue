@@ -1,5 +1,5 @@
 <template>
-   <nav class="fixed top-0 z-30 w-full px-2">
+   <nav class="top-0 z-30 w-full px-2">
      <div class="w-full px-3 py-3 fontPoppins bg-widget max-w-md mx-auto my-2 rounded-xl flex items-center">
        <img
            src="https://mrtn.vip/resources/img/nav.c852416e.jpg"

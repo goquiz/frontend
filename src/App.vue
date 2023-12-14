@@ -2,6 +2,7 @@
 import { RouterView } from 'vue-router'
 import {useLoadingStore} from "@/stores/loading";
 import Loader from "@/components/Loader.vue";
+import GuestLayout from "@/components/layouts/GuestLayout.vue";
 
 const loadingStore = useLoadingStore()
 </script>
@@ -14,7 +15,9 @@ const loadingStore = useLoadingStore()
       </div>
     </transition>
   </RouterView>
-  <Loader v-else />
+  <GuestLayout v-else>
+    <Loader/>
+  </GuestLayout>
 </template>
 
 <style>
