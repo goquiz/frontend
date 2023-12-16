@@ -50,5 +50,26 @@ export default {
 
   // About us, How to
   'About us': 'Rólunk',
-  'How to': 'Hogyan'
+  'How to': 'Hogyan',
+
+  // Login Page
+  Login: 'Bejelentkezés',
+  Username: 'Felhasználónév',
+  Password: 'Jelszó',
+  Register: 'Regisztráció',
+  'I forgot my password': 'Elfelejtettem a jelszavam',
+  'Already registered?': 'Már regisztráltál?',
+  'Forgot password?': 'Elfelejtette jelszavát?',
+  'Username or email address': 'Felhasználónév vagy email cím',
+  Reset: 'Visszaállítás',
+  'Do you remember it?': 'Mégis emlékszel rá?',
+
+  // Questions page
+  Questions: 'Kérdések',
+  Question: 'Kérdés',
+  Answers: 'Válaszok',
+  Answer: 'Válasz',
+  Solution: 'Megoldás',
+  'Add new': 'Új hozzáadása',
+  'Select an answer': 'Kérlek válaszd ki a helyes választ',
 }
