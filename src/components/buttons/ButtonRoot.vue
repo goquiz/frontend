@@ -1,6 +1,6 @@
 <template>
   <button
-      class="fontFredoka transition-all hover:opacity-80 focus:opacity-70 bg-gradient-to-r duration-150 w-full bg-purple-400 px-2 py-2.5 md:px-5 md:py-3 rounded-xl disabled:cursor-not-allowed"
+      class="fontFredoka transition-all hover:opacity-80 focus:opacity-70 bg-gradient-to-r duration-150 w-full px-2 py-2.5 md:px-5 md:py-3 rounded-xl disabled:cursor-not-allowed"
       :class="{'flex items-center space-x-2 text-center content-center justify-center': isLoading}"
       :disabled="isLoading"
   >

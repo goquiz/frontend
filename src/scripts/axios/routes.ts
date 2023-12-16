@@ -6,10 +6,15 @@ const routes: {[index: string]: string} = {
     'auth.me': '/me',
     'quiz.all': '/quiz',
     'quiz.create': '/quiz',
+    'quiz.id': '/quiz/:0'
 }
 
-const routePath = (route: string) => {
-    return routes[route];
+const routePath = (route: string, params: Array<string|number> = []) => {
+    let r = routes[route];
+    params.forEach((p, inx) => {
+        r = r.replace(':' + inx.toString(), p.toString())
+    })
+    return r
 }
 
 export {
