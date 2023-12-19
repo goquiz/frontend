@@ -7,8 +7,10 @@
 <script setup lang="ts">
 import UseQuiz from "@/components/quiz/UseQuiz.vue";
 import type {Question} from "@/types/question";
+import {shuffleArray} from "@/scripts/helpers/shuffle";
 
-const questions = [
+
+const questions = shuffleArray([
   {
     id: 1,
     question: 'What is the most popular javascript framework?',
@@ -32,5 +34,5 @@ const questions = [
       'MySQL', 'Firebase', 'PostgreSQL', 'MsSQL'
     ]
   } as Question
-]
+])
 </script>

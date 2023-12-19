@@ -31,9 +31,9 @@ import {AxiosError} from "axios";
 import type {AxiosResponse} from "axios";
 import {useToast} from "vue-toastification";
 import router from "@/router";
-import i18n from "@/i18n";
 import Widget from "@/components/Widget.vue";
 import EditQuestion from "@/components/quiz/EditQuestion.vue";
+import {useI18n} from "vue-i18n";
 
 const route = useRoute()
 
@@ -50,7 +50,7 @@ const loadQuestion = async () => {
     if(e instanceof AxiosError) {
       simpleMessageHelper(e)
     } else {
-      useToast().error(i18n.t('error.unknown'))
+      useToast().error(useI18n().t('error.unknown'))
     }
     await router.push('/')
     return;

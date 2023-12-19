@@ -10,9 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import type {PropType} from "vue";
-
 defineProps<{
-  error: PropType<[string, string|null]>
+  error?: [string, string|null];
 }>()
 </script>

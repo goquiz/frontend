@@ -6,10 +6,10 @@
       <h4 class="fontFredoka mt-2">{{$t('Answers')}}</h4>
 
      <div>
-       <template v-for="i in Object.keys(values.answers)" :key="i">
+       <template v-for="(val, inx) in Object.keys(values.answers)" :key="`${val}-${inx}`">
         <div class="flex items-center justify-center my-1">
-          <SimpleInput class="rounded-r-none" :placeholder="$t('Answer')" :value="values.answers[i]" v-model.lazy="values.answers[i]" />
-          <button @click="removeAnswer(i)" class="transition duration-150 p-3 rounded-r-xl bg-rose-400 border-2 border-rose-400 hover:opacity-80 focus:opacity-70">&times;</button>
+          <SimpleInput class="rounded-r-none" :placeholder="$t('Answer')" :value="values.answers[inx]" v-model.lazy="values.answers[inx]" />
+          <button @click="removeAnswer(inx)" class="transition duration-150 p-3 rounded-r-xl bg-rose-400 border-2 border-rose-400 hover:opacity-80 focus:opacity-70">&times;</button>
         </div>
        </template>
        <button v-if="values.answers.length < 4" @click="add" class="transition duration-150 bg-login-input px-3 py-2 w-full fontFredoka text-center rounded-xl hover:opacity-80 focus:opacity-70">

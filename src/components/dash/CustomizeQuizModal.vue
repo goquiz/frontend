@@ -12,13 +12,12 @@
 <script setup lang="ts">
 import Modal from "@/components/modal/Modal.vue";
 import SimpleInput from "@/components/inputs/SimpleInput.vue";
-import type {PropType} from "vue";
 import type {Quiz} from "@/types/quiz";
 import ButtonDanger from "@/components/buttons/ButtonDanger.vue";
 import ButtonBluish from "@/components/buttons/ButtonBluish.vue";
 
 defineProps<{
-  show: PropType<boolean>;
+  show: boolean;
   quiz: Quiz;
 }>()
 

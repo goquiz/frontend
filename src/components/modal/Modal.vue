@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 defineProps<{
-  show: Boolean;
+  show: boolean;
 }>()
 
 const emit = defineEmits(['close'])

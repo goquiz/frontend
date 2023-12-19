@@ -1,8 +1,9 @@
 <template>
   <Modal :show="show" @close="close">
     <h2 class="text-2xl fontMitr mb-2">{{$t('New Quiz')}}</h2>
-    <form v-on:submit.prevent>
+    <form v-on:submit.prevent class="text-left">
       <SimpleInput :disabled="processing" v-model.lazy="name" :placeholder="$t('Your Quiz\'s name')" />
+      <InputError v-if="errors?.name" :error="errors?.name" />
       <ButtonBluish :isLoading="processing" @click="submit" class="mt-2">{{$t('Create')}}</ButtonBluish>
     </form>
   </Modal>
@@ -14,16 +15,21 @@ import SimpleInput from "@/components/inputs/SimpleInput.vue";
 import ButtonBluish from "@/components/buttons/ButtonBluish.vue";
 import type {AxiosResponse} from "axios";
 import {AxiosError} from "axios";
+import InputError from "@/components/inputs/InputError.vue";
+import simpleMessageHelper from "@/scripts/errorTranslator/simpleMessageHelper";
+import translator from "@/scripts/errorTranslator";
+import type {TInputError} from "@/scripts/errorTranslator";
 
 export default defineComponent({
   data() {
     return {
       name: '',
       processing: false,
-      errors: {}
+      errors: {} as TInputError
     };
   },
   components: {
+    InputError,
     ButtonBluish,
     SimpleInput,
     Modal,
@@ -46,17 +52,12 @@ export default defineComponent({
           name: this.name
         })
       } catch(e: unknown) {
-        if(e instanceof AxiosError) {
-          if(e.response && e.response.data?.error?.message) {
-            this.$toast.error(e.response.data.error.message)
-            this.processing = false
-            return
-          } else if(e.response && Object.keys(e.response.data).includes('errors')) {
-            this.processing = false
-            return
+        if(e instanceof AxiosError && e.response) {
+          simpleMessageHelper(e)
+          if(Object.keys(e.response.data).includes('errors')) {
+            this.errors = translator(e.response.data['errors'])
           }
-        } else console.error(e)
-        this.$toast.error(this.$t('An unknown error occurred'))
+        } else this.$toast.error(this.$t('error.unknown'))
         this.processing = false
         return
       }
@@ -66,7 +67,7 @@ export default defineComponent({
         this.close()
         return
       }
-      this.$toast.error(this.$t('An unknown error occurred'))
+      this.$toast.error(this.$t('error.unknown'))
       this.processing = false
     }
   }

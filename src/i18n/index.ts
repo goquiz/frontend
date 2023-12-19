@@ -4,8 +4,8 @@ import hu from './data/hu'
 
 const i18n = createI18n({
   legacy: false,
-  locale: 'en',
-  fallbackLocale: navigator.language.substring(0,2),
+  locale: navigator.language.substring(0,2),
+  fallbackLocale: 'en',
   messages: {
     en,
     hu,
