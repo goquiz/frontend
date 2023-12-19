@@ -1,5 +1,5 @@
 <template>
-  <QuestionsCounter :count="questions?.length || 0" :completed="dataAnswers.length" />
+  <QuestionsCounter :count="questions?.length || 0" :completed="completedCount" />
   <GuestLayout>
     <Widget>
       <img alt="Question Image" class="rounded-xl mb-2"
@@ -10,15 +10,18 @@
       </h2>
     </Widget>
     <section class="grid grid-cols-2 gap-2">
-      <AnswerButton @click="addAnswer(answer)" :class="{'!border-blue-300': currentAnswer == answer}" v-for="answer in currentQuestion.answers" :key="answer">
-        {{answer}}
-      </AnswerButton>
+      <template v-for="answer in currentQuestion.answers" :key="answer">
+        <AnswerButton @click="addAnswer(answer)" :class="{'!border-blue-300': currentAnswer == answer}">
+          {{answer}}
+        </AnswerButton>
+      </template>
     </section>
     <section class="flex items-center space-x-2 mt-10">
       <ButtonBluish @click="state--" :disabled="state == 0">{{$t('Back')}}</ButtonBluish>
-      <ButtonPinkle class="inline-block" @click="$toast.warning($t('Please select an answer before continue'))" v-if="currentAnswer == false">{{$t('Next')}}</ButtonPinkle>
+      <ButtonPinkle class="inline-block" @click="$toast.warning($t('Please select an answer before continue'))" v-if="!canStartNext">{{$t('Next')}}</ButtonPinkle>
       <ButtonPinkle v-else-if="state+1 !== questions?.length" @click="state++" :disabled="!canStartNext">{{$t('Next')}}</ButtonPinkle>
-      <ButtonGreenish @click="showSubmitModal = true" v-else>{{$t('Submit')}}</ButtonGreenish>
+      <ButtonGreenish @click="showSubmitModal = true" v-else-if="completedCount == answers.length">{{$t('Submit')}}</ButtonGreenish>
+      <ButtonGreenish v-else @click="$toast.warning($t('Please select an answer before continue'))">{{$t('Submit')}}</ButtonGreenish>
     </section>
   </GuestLayout>
   <AreYouSureModal
@@ -28,9 +31,7 @@
   />
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
-import type {PropType} from 'vue'
+<script setup lang="ts">
 import ButtonBluish from "@/components/buttons/ButtonBluish.vue";
 import ButtonPinkle from "@/components/buttons/ButtonPinkle.vue";
 import QuestionsCounter from "@/components/quiz/QuestionsCounter.vue";
@@ -40,48 +41,42 @@ import AnswerButton from "@/components/quiz/AnswerButton.vue";
 import type {Question} from "@/types/question";
 import ButtonGreenish from "@/components/buttons/ButtonGreenish.vue";
 import AreYouSureModal from "@/components/quiz/AreYouSureModal.vue";
+import {computed, onBeforeMount, ref} from "vue";
+import type {Ref} from "vue";
 
-export default defineComponent({
-  data() {
-    return {
-      state: 0,
-      dataAnswers: [] as Array<string>,
-      showSubmitModal: false,
-    };
-  },
-  computed: {
-    currentQuestion() {
-      if(this.questions == undefined || this.questions?.length && this.questions.length < this.state+1) return {
-        question: 'Something wrong happened',
-        image: undefined,
-        answers: [],
-      }
-      return this.questions[this.state]
-    },
-    currentAnswer() {
-      return this.dataAnswers[this.state]
-    },
-    canStartNext() {
-      if(!this.questions) return false
-      return this.state <= this.questions.length
-    }
-  },
-  components: {AreYouSureModal, ButtonGreenish, AnswerButton, GuestLayout, Widget, QuestionsCounter, ButtonPinkle, ButtonBluish},
-  props: {
-    questions: Array as PropType<Array<Question>>,
-  },
-  methods: {
-    addAnswer(answer: string) {
-      if(this.dataAnswers.length < this.state + 1) this.dataAnswers.push(answer as never)
-      else if(this.dataAnswers[this.state] != answer) {
-        this.dataAnswers[this.state] = answer
-      } else {
-        this.dataAnswers.splice(this.state, 1)
-      }
-    },
-    submit() {
-      console.log(this.dataAnswers)
-    }
+const props = defineProps<{
+  questions: Array<Question>
+}>()
+
+// refs
+const answers = ref([]) as Ref<Array<string|null>>
+const state = ref(0)
+const showSubmitModal = ref(false)
+
+// getters
+const currentQuestion = computed(() => props.questions[state.value])
+const currentAnswer = computed(() => answers.value[state.value] !== null ? answers.value[state.value] : false)
+const canStartNext = computed(() => answers.value.length > state.value)
+const completedCount = computed(() => answers.value.filter((v) => v != null).length)
+
+// setters
+const addAnswer = (answer: string) => {
+  if(answers.value[state.value] == answer) {
+    answers.value[state.value] = null
+  } else {
+    answers.value[state.value] = answer
+  }
+  console.log(answers.value, answer, state.value, answers.value.keys())
+}
+
+// actions
+const submit = () => {
+  console.log(answers.value)
+}
+
+onBeforeMount(() => {
+  for(let i = 0; i < props.questions.length; i++) {
+    answers.value[i] = null
   }
 })
 </script>

@@ -68,11 +68,9 @@ export default defineComponent({
           password: this.password
         })
       } catch(e: unknown) {
-        console.log(e)
         if(e instanceof AxiosError && e.response) {
           simpleMessageHelper(e)
           if(Object.keys(e.response.data).includes('errors')) {
-            console.log(translator(e.response.data['errors']))
             this.errors = translator(e.response.data['errors'])
           }
         } else {

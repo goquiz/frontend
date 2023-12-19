@@ -19,20 +19,24 @@
          <button class="transition duration-150 p-3 bg-main-from hover:bg-main-to rounded-xl">
            <Settings/>
          </button>
-         <button class="ml-2 transition duration-150 p-3 bg-main-from hover:bg-main-to rounded-xl">
+         <button @click="menuOpen = !menuOpen" class="ml-2 transition duration-150 p-3 bg-main-from hover:bg-main-to rounded-xl">
            <Menu/>
          </button>
        </div>
      </div>
+     <UserWidgetMenu class="mt-3" v-show="menuOpen" />
    </nav>
 </template>
 <script setup lang="ts">
 import Settings from "@/components/icons/Settings.vue";
 import {useAuthStore} from "@/stores/auth";
-import {computed} from "vue";
+import {computed, ref} from "vue";
 import Menu from "@/components/icons/Menu.vue";
+import UserWidgetMenu from "@/components/UserWidgetMenu.vue";
 
 const auth = useAuthStore()
 const username = computed(() => auth.user?.username || 'Unknown')
 const profileImage = computed(() => auth.user?.profile_image_url || false)
+
+const menuOpen = ref(false)
 </script>
