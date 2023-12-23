@@ -9,7 +9,7 @@
         </div>
         <div class="grid grid-cols-2 gap-2 mt-3">
           <ButtonGreenish v-tippy="{content: $t('Rename or delete this quiz')}" @click="manage(quiz)">{{ $t('Customize') }}</ButtonGreenish>
-          <ButtonBluish v-tippy="{content: $t('Create a new session for this quiz')}">{{ $t('Hosts') }}</ButtonBluish>
+          <ButtonBluish :to="`/dashboard/quizzes/${quiz.id}/hosts`" v-tippy="{content: $t('Create a new session for this quiz')}">{{ $t('Hosts') }}</ButtonBluish>
         </div>
         <ButtonPinkle :to="`/dashboard/quizzes/${quiz.id}/questions`" v-tippy="{content: $t('Create, edit or delete questions and answers')}" class="mt-2">{{ $t('Manage questions') }}</ButtonPinkle>
       </Widget>

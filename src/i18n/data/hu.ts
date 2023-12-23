@@ -47,6 +47,7 @@ export default {
   Save: 'Mentés',
   'Danger Zone': 'Veszélyzóna',
   Delete: 'Törlés',
+  Retain: 'Megtartás',
 
   // About us, How to
   'About us': 'Rólunk',

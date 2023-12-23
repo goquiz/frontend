@@ -63,7 +63,7 @@ export default defineComponent({
       }
       if(res.status == 200 && Object.keys(res.data).includes('quiz_id') && res.data['quiz_id'] !== 0) {
         this.processing = false
-        this.$router.push('/Dashboard/quizzes/' + res.data['quiz_id'] + '/questions')
+        this.$router.push('/dashboard/quizzes/' + res.data['quiz_id'] + '/questions')
         this.close()
         return
       }

@@ -8,5 +8,5 @@ export type Quiz = {
 export type FullQuiz = {
     id: number;
     name: string;
-    questions: Array<Question>;
+    questions: Array<Question>|null;
 }

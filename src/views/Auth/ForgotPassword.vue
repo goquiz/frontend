@@ -13,6 +13,7 @@
       <Link to="/login">{{$t('Login')}}</Link>
     </div>
   </GuestLayout>
+  <BottomLinks/>
 </template>
 
 <script setup lang='ts'>
@@ -20,4 +21,5 @@ import GuestLayout from '@/components/layouts/GuestLayout.vue';
 import ButtonPinkle from "@/components/buttons/ButtonPinkle.vue";
 import AuthInputComponent from "@/components/inputs/AuthInputComponent.vue";
 import Link from "@/components/Link.vue";
+import BottomLinks from "@/components/about/BottomLinks.vue";
 </script>

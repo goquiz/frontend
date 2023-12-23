@@ -1,5 +1,5 @@
 <template>
-  <ButtonRootLink classList="from-rose-600 via-red-500 to-pink-600">
+  <ButtonRootLink classList="from-rose-600 to-pink-600">
     <slot/>
   </ButtonRootLink>
 </template>

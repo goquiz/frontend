@@ -6,7 +6,9 @@ const routes: {[index: string]: string} = {
     'auth.me': '/me',
     'quiz.all': '/quiz',
     'quiz.create': '/quiz',
-    'quiz.id': '/quiz/:0'
+    'quiz.id': '/quiz/:0',
+    'quiz.questions': '/quiz/:0/questions',
+    'quiz.question': '/quiz/:0/questions/:1',
 }
 
 const routePath = (route: string, params: Array<string|number> = []) => {

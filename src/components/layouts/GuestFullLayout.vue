@@ -1,6 +1,5 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-import BottomLinks from "@/components/about/BottomLinks.vue";
 
 export default defineComponent({
   methods: {
@@ -9,9 +8,6 @@ export default defineComponent({
       const idx = Math.floor(Math.random() * classes.length);
       return classes[idx]
     }
-  },
-  components: {
-    BottomLinks
   },
   props: {
     flex: Boolean,
@@ -25,10 +21,9 @@ export default defineComponent({
       <li class="opacity-20" :class="randomClass()" v-for="i in 10" :key="i"></li>
     </ul>
   </div>
-  <div class="h-screen overflow-hidden blurred" :class="{'flex': flex}">
+  <div class="min-h-screen h-auto overflow-hidden blurred" :class="{'flex': flex}">
     <slot/>
   </div>
-  <BottomLinks/>
 </template>
 
 <style scoped>

@@ -7,6 +7,7 @@ import EditQuizQuestions from "@/views/Dashboard/EditQuizQuestions.vue";
 import PlayQuiz from "@/views/Play/PlayQuiz.vue";
 import MyQuizzes from "@/views/Dashboard/MyQuizzes.vue";
 import BeforePlay from "@/views/Play/BeforePlay.vue";
+import QuizHosts from "@/views/Dashboard/QuizHosts.vue";
 
 export default [
   {
@@ -53,6 +54,14 @@ export default [
     path: '/dashboard/quizzes/:id/questions',
     name: 'dashboard.quizzes.questions',
     component: EditQuizQuestions,
+    meta: {
+      auth: adamsecu.ACCESS_LOGIN
+    }
+  },
+  {
+    path: '/dashboard/quizzes/:id/hosts',
+    name: 'dashboard.quizzes.hosts',
+    component: QuizHosts,
     meta: {
       auth: adamsecu.ACCESS_LOGIN
     }
