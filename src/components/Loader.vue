@@ -10,5 +10,5 @@
 </template>
 <script setup lang="ts">
 import Widget from "@/components/Widget.vue";
-import LoaderIcon from '@/components/icons/Loader.vue'
+import LoaderIcon from '@/components/icons/Spinner.vue'
 </script>

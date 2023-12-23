@@ -27,6 +27,7 @@
     </p>
     <ButtonBluish @click="registeredModal = false" class="mt-2">Cool ;)</ButtonBluish>
   </Modal>
+  <BottomLinks/>
 </template>
 
 <script lang='ts'>
@@ -42,10 +43,11 @@ import InputError from "@/components/inputs/InputError.vue";
 import Modal from "@/components/modal/Modal.vue";
 import ButtonBluish from "@/components/buttons/ButtonBluish.vue";
 import simpleMessageHelper from "@/scripts/errorTranslator/simpleMessageHelper";
+import BottomLinks from "@/components/about/BottomLinks.vue";
 
 export default defineComponent({
   // eslint-disable-next-line vue/no-reserved-component-names
-  components: {ButtonBluish, Modal, InputError, GuestLayout, ButtonPinkle, AuthInputComponent, Link},
+  components: {BottomLinks, ButtonBluish, Modal, InputError, GuestLayout, ButtonPinkle, AuthInputComponent, Link},
   data() {
     return {
       username: '',

@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import Loader from "@/components/icons/Loader.vue";
+import Loader from "@/components/icons/Spinner.vue";
 import {defineComponent} from "vue";
 
 export default defineComponent({
