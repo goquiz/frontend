@@ -53,7 +53,7 @@ const submit = async (data: object) => {
   if(res.status == 200) {
     toast.success(props.question ? "Edited successfully" : "Created successfully")
     if(props.question) {
-      emit('modify', props.question.id, data)
+      emit('modify', props.question.id, {id: props.question.id, ...data})
     } else if(res.data?.question) {
       emit('push', res.data.question)
     } else window.location.reload()

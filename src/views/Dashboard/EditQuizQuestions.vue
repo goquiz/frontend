@@ -21,7 +21,7 @@
           </template>
        </div>
        <div class="grid grid-cols-5 gap-2 mt-1">
-         <ButtonPinkle @click="showQuestionModal(question)" class="col-span-4">Edit</ButtonPinkle>
+         <ButtonPinkle @click="showQuestionModal(question)" class="col-span-4">{{$t('Edit')}}</ButtonPinkle>
          <ButtonDanger :disabled="deleteProcessing.includes(question.id)" @click="destroy(question.id)">
            <Trash class="mx-auto" v-if="!deleteProcessing.includes(question.id)" />
            <Spinner v-else />
@@ -118,10 +118,12 @@ const modifyQuestion = (id: number, data: Question) => {
       }
     }
   }
+  showNewModal.value = false
 }
 
 const pushNewQuestion = (data: Question) => {
   if(quizData.value && quizData.value?.questions) quizData.value.questions.push(data)
+  showNewModal.value = false
 }
 
 const destroy = async (id: number) => {
