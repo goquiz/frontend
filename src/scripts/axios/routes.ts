@@ -9,6 +9,9 @@ const routes: {[index: string]: string} = {
     'quiz.id': '/quiz/:0',
     'quiz.questions': '/quiz/:0/questions',
     'quiz.question': '/quiz/:0/questions/:1',
+    'quiz.hosts': '/quiz/:0/hosts',
+    'quiz.host': '/quiz/:0/hosts/:1',
+    'quiz.host.activity': '/quiz/:0/hosts/:1/activity'
 }
 
 const routePath = (route: string, params: Array<string|number> = []) => {
