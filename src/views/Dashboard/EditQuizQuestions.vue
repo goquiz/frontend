@@ -2,16 +2,10 @@
  <AuthFullLayout>
    <Loader v-if="isLoading" />
    <template v-else-if="quizData">
-     <Widget>
-       <div class="flex items-center space-x-2 justify-between">
-         <h2 class="text-xl fontFredoka">{{quizData.name}}</h2>
-         <span v-tippy="{content: $t('The identifier of this quiz')}" class="fontMitr text-gray-400 cursor-pointer no-select">ID: {{quizData.id}}</span>
-       </div>
-       <div class="mt-2">
-         <ButtonBluish @click="showQuestionModal(undefined)">Add new question</ButtonBluish>
-       </div>
-     </Widget>
-     <h3 class="text-xl fontFredoka">{{$t('Questions')}} (15/{{ quizData?.questions ? quizData.questions.length : 0 }})</h3>
+     <DisplayQuizInfo :id="quizData.id" :name="quizData.name">
+       <ButtonBluish v-if="questionsLength < 15" @click="showQuestionModal(undefined)">{{$t('Add new question')}}</ButtonBluish>
+     </DisplayQuizInfo>
+     <h3 class="text-xl fontFredoka">{{$t('Questions')}} (15/{{ questionsLength }})</h3>
      <Widget v-for="question in quizData.questions" :key="question.id">
        <img v-if="question.image" class="rounded-lg" alt="Question's image" :src="question.image" />
        <h4 class="text-lg">{{ question.question }}</h4>
@@ -28,7 +22,7 @@
          </ButtonDanger>
        </div>
      </Widget>
-     <Widget v-if="!quizData?.questions">
+     <Widget v-if="!quizData?.questions || quizData.questions.length == 0">
         <h3>
          {{$t('Add your first question')}}.
         </h3>
@@ -53,7 +47,7 @@
 <script setup lang="ts">
 import AuthFullLayout from "@/components/layouts/AuthFullLayout.vue";
 import Loader from "@/components/Loader.vue";
-import {onMounted, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 import type {Ref} from 'vue'
 import {useRoute} from "vue-router";
 import axios from "@/scripts/axios";
@@ -74,6 +68,7 @@ import ButtonBluish from "@/components/buttons/ButtonBluish.vue";
 import type {Question} from "@/types/question";
 import QuestionModal from "@/components/questions/QuestionModal.vue";
 import Spinner from "@/components/icons/Spinner.vue";
+import DisplayQuizInfo from "@/components/dash/DisplayQuizInfo.vue";
 
 const route = useRoute()
 const toast = useToast()
@@ -85,6 +80,8 @@ const deleteProcessing: Ref<Array<number>> = ref([])
 
 const isLoading = ref(true)
 const quizData: Ref<FullQuiz|undefined> = ref(undefined)
+
+const questionsLength = computed(() => quizData.value?.questions ? quizData.value.questions.length : 0)
 
 const loadQuestion = async () => {
   const id: string = route.params.id as string
@@ -102,6 +99,7 @@ const loadQuestion = async () => {
     return;
   }
   quizData.value = res.data as FullQuiz;
+  if(!quizData.value?.questions) quizData.value = {...quizData.value, questions: []}
   isLoading.value = false
 }
 

@@ -25,5 +25,8 @@ export const useAuthStore = defineStore('auth', {
                 this.user = res.data['authUser'] as User
             }
         },
+        logout() {
+             this.user = null
+        }
     }
 })

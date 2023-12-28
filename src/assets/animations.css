@@ -6,10 +6,10 @@
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: premiumText 18s linear infinite;
+    animation: textGradientAnimation 18s linear infinite;
 }
 
-@keyframes premiumText {
+@keyframes textGradientAnimation {
     to {
         background-position:var(--bg-size) 0
     }

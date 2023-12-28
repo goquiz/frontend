@@ -19,7 +19,7 @@ export default {
   Soon: 'Hamarosan',
   Subscribe: 'Feliratkozás',
   NOW: 'MOST',
-  'Join a Quiz': 'Csatlakozás Kvízhez',
+  'Join a Quiz': 'Csatlakozás kvízhez',
   Dashboard: 'Kezdőfelület',
 
   // Join Quiz page
@@ -27,7 +27,7 @@ export default {
   Join: 'Csatlakozás',
 
   // Dashboard
-  'My Quizzes': 'Saját Kvízeim',
+  'My Quizzes': 'Saját kvízeim',
   All: 'Összes',
   'Create new': 'Új létrehozása',
   'Completed Quizzes': 'Befejezett kvízeim',
@@ -73,4 +73,25 @@ export default {
   Solution: 'Megoldás',
   'Add new': 'Új hozzáadása',
   'Select an answer': 'Kérlek válaszd ki a helyes választ',
+
+  // Loader
+  'Just a moment': 'Egy pillanat',
+
+  // Hosts
+  'Show code': 'Kód mutatása',
+  'Join with this code': 'Csatlakozz ezzel a kóddal',
+  'Edit': 'Módosítás',
+  'Change to active': 'Kvíz aktiválása',
+  'Change to inactive': 'Kvíz szüneteltetése',
+  'Activate before showing code': 'Aktiválja a kód mutatása előtt',
+  'View completions': 'Kitöltések megtekintése',
+
+  // Play
+  '{name} invited you to play': '{name} meghívott, hogy játssz',
+  Back: 'Vissza',
+  Next: 'Következő',
+  Submit: 'Beküldés',
+  'Please select an answer before continue': 'Kérlek válassz mielőtt továbblépnél',
+  'Are you sure you want to submit?': 'Biztos, hogy be szeretnéd küldeni?',
+  'YEAH!': 'IGEN!',
 }

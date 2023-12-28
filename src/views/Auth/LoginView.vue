@@ -87,7 +87,9 @@ export default defineComponent({
         if(Object.keys(res.data).includes('session')) window.localStorage.setItem('session', res.data['session'])
       }
       this.processing = false
-      this.$router.push('/')
+      if(this.$route.query?.to) {
+        this.$router.push(this.$route.query.to as string)
+      } else this.$router.push('/')
     }
   }
 })

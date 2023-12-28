@@ -15,7 +15,7 @@
       </Widget>
     </div>
   </AuthFullLayout>
-  <ManageQuizModal v-if="showModal" @close="showModal = false" :quiz="modalQuiz" :show="showModal" />
+  <ManageQuizModal @updated="updateQuiz" v-if="showModal" @close="showModal = false" :quiz="modalQuiz" :show="showModal" />
 </template>
 
 <script lang="ts">
@@ -70,6 +70,14 @@ export default defineComponent({
     manage(quiz: Quiz) {
       this.modalQuiz = quiz
       this.showModal = true
+    },
+    updateQuiz(name: string) {
+      const searchId = this.modalQuiz.id
+      this.quizzes.forEach((quiz) => {
+        if(quiz.id == searchId) {
+          quiz.name = name
+        }
+      })
     }
   },
   async beforeMount() {

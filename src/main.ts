@@ -25,7 +25,7 @@ app.use(i18n)
 app.use(Toast, {})
 app.use(VueTippy, {
     directive: 'tippy',
-    component: 'tippy',
+    component: 'Tippy',
 })
 
 app.config.globalProperties.$toast = useToast()
