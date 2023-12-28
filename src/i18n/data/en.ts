@@ -8,4 +8,7 @@ export default {
   // Languages
   'en.fullname': 'English',
   'hu.fullname': 'Hungarian',
+
+  // invited
+  '{name} invited you to play': '{name} invited you to play'
 }

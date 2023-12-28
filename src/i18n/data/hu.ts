@@ -85,4 +85,13 @@ export default {
   'Change to inactive': 'Kvíz szüneteltetése',
   'Activate before showing code': 'Aktiválja a kód mutatása előtt',
   'View completions': 'Kitöltések megtekintése',
+
+  // Play
+  '{name} invited you to play': '{name} meghívott, hogy játssz',
+  Back: 'Vissza',
+  Next: 'Következő',
+  Submit: 'Beküldés',
+  'Please select an answer before continue': 'Kérlek válassz mielőtt továbblépnél',
+  'Are you sure you want to submit?': 'Biztos, hogy be szeretnéd küldeni?',
+  'YEAH!': 'IGEN!',
 }

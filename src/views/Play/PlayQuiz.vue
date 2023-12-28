@@ -1,16 +1,60 @@
 <template>
-  <UseQuiz
+  <GuestLayout v-if="!isLoaded">
+    <Loader />
+  </GuestLayout>
+  <UseQuiz v-else
   :questions="questions"
   />
 </template>
 
 <script setup lang="ts">
 import UseQuiz from "@/components/quiz/UseQuiz.vue";
-import type {Question} from "@/types/question";
+import {onMounted, ref} from "vue";
+import type {Ref} from 'vue'
+import GuestLayout from "@/App.vue";
+import Loader from "@/App.vue";
+import type {AxiosResponse} from "axios";
+import axios from "@/scripts/axios";
+import {routePath} from "@/scripts/axios/routes";
+import {useRoute, useRouter} from "vue-router";
+import {AxiosError} from "axios";
+import simpleMessageHelper from "@/scripts/errorTranslator/simpleMessageHelper";
+import {useToast} from "vue-toastification";
+import {useI18n} from "vue-i18n";
 import {shuffleArray} from "@/scripts/helpers/shuffle";
+import type {Question} from "@/types/question";
 
+const route = useRoute()
+const router = useRouter()
+const toast = useToast()
+const i18n = useI18n()
 
-const questions = shuffleArray([
+const isLoaded = ref(false)
+const questions = ref([]) as Ref<Array<Question>>;
+
+const load = async () => {
+  let res: AxiosResponse
+  try {
+    res = await axios.get(routePath('play', [route.params.id as string]))
+  } catch(e: unknown) {
+    if(e instanceof AxiosError && e.response) {
+      simpleMessageHelper(e)
+    } else toast.error(i18n.t('error.unknown'))
+    router.back()
+    return
+  }
+  if(res.status == 200 && res.data) {
+    questions.value = shuffleArray(res.data)
+    isLoaded.value = true
+    return
+  }
+  toast.error(i18n.t('error.unknown'))
+  router.back()
+  return
+}
+
+onMounted(load)
+/*const questions = shuffleArray([
   {
     id: 1,
     question: 'What is the most popular javascript framework?',
@@ -34,5 +78,5 @@ const questions = shuffleArray([
       'MySQL', 'Firebase', 'PostgreSQL', 'MsSQL'
     ]
   } as Question
-])
+])*/
 </script>

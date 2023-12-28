@@ -1,5 +1,5 @@
 <template>
-  <QuestionsCounter :count="questions?.length || 0" :completed="completedCount" />
+  <QuestionsCounter :data="answers" :completed="completedCount" />
   <GuestLayout>
     <Widget>
       <img alt="Question Image" class="rounded-xl mb-2"
@@ -56,7 +56,7 @@ const showSubmitModal = ref(false)
 // getters
 const currentQuestion = computed(() => props.questions[state.value])
 const currentAnswer = computed(() => answers.value[state.value] !== null ? answers.value[state.value] : false)
-const canStartNext = computed(() => answers.value.length > state.value)
+const canStartNext = computed(() => answers.value[state.value] != null)
 const completedCount = computed(() => answers.value.filter((v) => v != null).length)
 
 // setters

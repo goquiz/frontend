@@ -29,7 +29,7 @@ router.beforeEach(async (to, from, next) => {
   if(to?.meta?.auth) {
     const auth_meta = to.meta.auth
     if(auth_meta == GuardTypes.ACCESS_LOGIN && !auth.isLoggedIn) {
-      next('/login')
+      next('/login' + (from.name == 'auth.login' ? '' : `?to=${from.path}`))
     } else if(auth_meta == GuardTypes.ACCESS_NO_LOGIN && auth.isLoggedIn) {
       next(from)
     } next()
