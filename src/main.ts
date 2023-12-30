@@ -1,5 +1,5 @@
 // styles
-import './assets/main.css'
+import './assets/styles/main.css'
 import 'vue-toastification/dist/index.css'
 import 'tippy.js/dist/tippy.css'
 

@@ -1,7 +1,7 @@
 <template>
   <AuthFullLayout>
     <Loader class="mt-5" v-if="!loaded" />
-    <div class="mt-5" v-else>
+    <div class="mt-5" v-else-if="quizzes.length > 0">
       <Widget v-for="quiz in quizzes" :key="quiz.id">
         <div class="flex items-center space-x-2 justify-between">
           <h2 class="text-xl fontFredoka">{{quiz.name}}</h2>
@@ -14,8 +14,13 @@
         <ButtonPinkle :to="`/dashboard/quizzes/${quiz.id}/questions`" v-tippy="{content: $t('Create, edit or delete questions and answers')}" class="mt-2">{{ $t('Manage questions') }}</ButtonPinkle>
       </Widget>
     </div>
+    <Widget class="mt-5" v-else>
+      <h2 class="text-2xl fontMitr">{{ $t('You have no quizzes yet') }}</h2>
+      <ButtonPinkle @click="showNewQuizModal = true" class="mt-2">{{$t('Create your first')}}</ButtonPinkle>
+    </Widget>
   </AuthFullLayout>
   <ManageQuizModal @updated="updateQuiz" v-if="showModal" @close="showModal = false" :quiz="modalQuiz" :show="showModal" />
+  <NewQuizModal :show="showNewQuizModal" @close="showNewQuizModal = false" />
 </template>
 
 <script lang="ts">
@@ -32,19 +37,21 @@ import ButtonBluish from "@/components/buttons/ButtonBluish.vue";
 import ButtonGreenish from "@/components/buttons/ButtonGreenish.vue";
 import ManageQuizModal from "@/components/dash/CustomizeQuizModal.vue";
 import ButtonPinkle from "@/components/buttons/ButtonPinkle.vue";
+import NewQuizModal from "@/components/dash/NewQuizModal.vue";
 
 export default defineComponent({
   setup() {
     const loadingStore = useLoadingStore()
     return {loadingStore}
   },
-  components: {ButtonPinkle, ManageQuizModal, ButtonGreenish, ButtonBluish, Loader, Widget, AuthFullLayout},
+  components: {NewQuizModal,ButtonPinkle, ManageQuizModal, ButtonGreenish, ButtonBluish, Loader, Widget, AuthFullLayout},
   data() {
     return {
       quizzes: [] as Array<Quiz>,
       loaded: false,
       showModal: false,
       modalQuiz: {} as Quiz,
+      showNewQuizModal: false,
     };
   },
   methods: {

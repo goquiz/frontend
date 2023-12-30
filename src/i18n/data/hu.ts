@@ -94,4 +94,23 @@ export default {
   'Please select an answer before continue': 'Kérlek válassz mielőtt továbblépnél',
   'Are you sure you want to submit?': 'Biztos, hogy be szeretnéd küldeni?',
   'YEAH!': 'IGEN!',
+
+  // Welcome page
+  'Teachers share, students thrive.': 'A tanárok megosztanak, a diákok fejlődnek.',
+  'Empower educators with': 'Hatékonyabb oktatás',
+  seamless: 'zökkenőmentes',
+  'quiz sharing.': 'kvízmegosztással.',
+  'Open-source repository': 'Nyílt forráskódú projekt',
+  'Join our community': 'Csatlakozz közösségünkhöz',
+
+  // Terms
+  'Terms and conditions': 'Felhasználási feltételek',
+  'Accept our terms and conditions before using our product.': 'A termék használata előtt fogadja el az általános szerződési feltételeinket.',
+  'Direct links': 'Közvetlen hivatkozások',
+  'Privacy Policy': 'Adatvédelmi irányelvek',
+  'I understood and I accept': 'Megértettem és elfogadom',
+
+  // Not found page
+  'This page couldn\'t be found': 'A keresett oldal nem található',
+  'Back to home': 'Vissza a főoldalra',
 }

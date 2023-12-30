@@ -1,0 +1,1 @@
+export type ServiceTerms = Array<Record<string, string|Array<string>>>
