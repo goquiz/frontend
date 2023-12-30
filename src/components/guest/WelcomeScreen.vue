@@ -39,7 +39,7 @@ import Discord from "@/components/icons/Discord.vue";
 .titleGradient {
   --bg-size: 400%;
   --color-one: white;
-  --color-two: rgba(150, 143, 249, 0.68);
+  --color-two: rgb(215, 213, 252);
   background: linear-gradient(90deg,var(--color-one),var(--color-two),var(--color-one)) 0 0 /var(--bg-size) 100%;
   color: transparent;
   -webkit-background-clip: text;
