@@ -1,8 +1,8 @@
 <template>
  <GuestLayout>
    <Widget>
-     <h1 class="text-center fontMitr text-4xl">This page couldn't be found</h1>
-     <ButtonBluish to="/" linkClass="mt-3">Back to Home</ButtonBluish>
+     <h1 class="text-center fontMitr text-2xl md:text-4xl">{{$t('This page couldn\'t be found')}}</h1>
+     <ButtonBluish to="/home" linkClass="mt-3">{{$t('Back to home')}}</ButtonBluish>
    </Widget>
  </GuestLayout>
 </template>

@@ -11,12 +11,13 @@ export default defineComponent({
   },
   props: {
     flex: Boolean,
+    disableAnimations: Boolean,
   }
 })
 </script>
 
 <template>
-  <div class="__animationObjects__">
+  <div class="__animationObjects__" v-if="!disableAnimations">
     <ul>
       <li class="opacity-20" :class="randomClass()" v-for="i in 10" :key="i"></li>
     </ul>

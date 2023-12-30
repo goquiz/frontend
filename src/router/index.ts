@@ -3,7 +3,7 @@ import {createRouter, createWebHistory} from 'vue-router'
 import main from '@/router/routes/main'
 import auth from '@/router/routes/auth'
 import {useAuthStore} from "@/stores/auth";
-import GuardTypes from "@/router/adamsecu";
+import GuardTypes from "@/router/guard";
 import {useLoadingStore} from "@/stores/loading";
 
 const routes: Array<RouteRecordRaw> = [

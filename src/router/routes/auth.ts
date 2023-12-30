@@ -1,4 +1,4 @@
-import adamsecu from '@/router/adamsecu'
+import guard from '@/router/guard'
 import LoginView from '@/views/Auth/LoginView.vue'
 import RegisterView from "@/views/Auth/RegisterView.vue";
 import ForgotPassword from "@/views/Auth/ForgotPassword.vue";
@@ -9,7 +9,7 @@ export default [
     name: 'auth.login',
     component: LoginView,
     meta: {
-      auth: adamsecu.ACCESS_NO_LOGIN,
+      auth: guard.ACCESS_NO_LOGIN,
     }
   },
   {
@@ -17,7 +17,7 @@ export default [
     name: 'auth.register',
     component: RegisterView,
     meta: {
-      auth: adamsecu.ACCESS_NO_LOGIN,
+      auth: guard.ACCESS_NO_LOGIN,
     }
   },
   {
@@ -25,7 +25,7 @@ export default [
     name: 'auth.forgot-password',
     component: ForgotPassword,
     meta: {
-      auth: adamsecu.ACCESS_ALL,
+      auth: guard.ACCESS_ALL,
     }
   }
 ]

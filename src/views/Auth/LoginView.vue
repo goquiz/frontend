@@ -89,7 +89,7 @@ export default defineComponent({
       this.processing = false
       if(this.$route.query?.to) {
         this.$router.push(this.$route.query.to as string)
-      } else this.$router.push('/')
+      } else this.$router.push('/home')
     }
   }
 })
