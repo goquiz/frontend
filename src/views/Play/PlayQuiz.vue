@@ -21,7 +21,6 @@ import {AxiosError} from "axios";
 import simpleMessageHelper from "@/scripts/errorTranslator/simpleMessageHelper";
 import {useToast} from "vue-toastification";
 import {useI18n} from "vue-i18n";
-import {shuffleArray} from "@/scripts/helpers/shuffle";
 import type {Question} from "@/types/question";
 
 const route = useRoute()
@@ -44,7 +43,7 @@ const load = async () => {
     return
   }
   if(res.status == 200 && res.data) {
-    questions.value = shuffleArray(res.data)
+    questions.value = res.data
     isLoaded.value = true
     return
   }
@@ -54,7 +53,7 @@ const load = async () => {
 }
 
 onMounted(load)
-/*const questions = shuffleArray([
+/*const questions = ([
   {
     id: 1,
     question: 'What is the most popular javascript framework?',
