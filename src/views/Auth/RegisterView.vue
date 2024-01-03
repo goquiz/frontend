@@ -20,7 +20,7 @@
       <Link to="/login">{{ $t('Login') }}</Link>
     </div>
   </GuestLayout>
-  <Modal :show="registeredModal" @click="registeredModal = false">
+  <Modal :show="registeredModal" @click="registeredModal = false" :disable-close="true">
     <h2 class="text-2xl fontMitr mb-2">{{$t('Successfully registered')}}</h2>
     <p class="text-left">
       {{ $t('Just a few more steps, we have sent a verification email, follow the instructions, and we\'ll meet.') }}
@@ -85,6 +85,7 @@ export default defineComponent({
       this.password = ''
       this.email = ''
       this.registeredModal = true
+      this.processing = false
     }
   }
 })

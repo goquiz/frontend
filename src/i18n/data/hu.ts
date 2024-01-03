@@ -85,6 +85,7 @@ export default {
   'Change to inactive': 'Kvíz szüneteltetése',
   'Activate before showing code': 'Aktiválja a kód mutatása előtt',
   'View completions': 'Kitöltések megtekintése',
+  'Create a new host': 'Új hoszt létrehozása',
 
   // Play
   '{name} invited you to play': '{name} meghívott, hogy játssz',
@@ -113,4 +114,8 @@ export default {
   // Not found page
   'This page couldn\'t be found': 'A keresett oldal nem található',
   'Back to home': 'Vissza a főoldalra',
+
+  // Navbar
+  About: 'Rólunk',
+  Logout: 'Kijelentkezés',
 }

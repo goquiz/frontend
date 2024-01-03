@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { base_url } from "@/scripts/axios/routes";
 import {useRequestLoaderStore} from "@/stores/requestLoader";
+import {useLoadingStore} from "@/stores/loading";
 
 const instance = axios.create({
     baseURL: base_url,
@@ -24,8 +25,12 @@ instance.interceptors.response.use(
     (res) => {
         return Promise.resolve(res)
     },
-    (res) => {
-        return Promise.reject(res)
+    (err) => {
+        if(!err?.response || err.code == 'ERR_NETWORK') {
+            const loadingStore = useLoadingStore()
+            loadingStore.serverUnavalible = true
+        }
+        return Promise.reject(err)
     }
 )
 

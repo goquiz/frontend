@@ -2,6 +2,7 @@
   <AuthFullLayout>
     <Loader class="mt-5" v-if="!loaded" />
     <div class="mt-5" v-else-if="quizzes.length > 0">
+      <h3 class="text-xl fontFredoka">{{$t('Quizzes')}} (10/{{ quizzes.length }})</h3>
       <Widget v-for="quiz in quizzes" :key="quiz.id">
         <div class="flex items-center space-x-2 justify-between">
           <h2 class="text-xl fontFredoka">{{quiz.name}}</h2>

@@ -11,23 +11,23 @@
     </Widget>
     <section class="grid grid-cols-2 gap-2">
       <template v-for="answer in currentQuestion.answers" :key="answer">
-        <AnswerButton @click="addAnswer(answer)" :class="{'!border-blue-300': currentAnswer == answer}">
+        <AnswerButton @click="addAnswer(answer, currentQuestion.id)" :class="{'!border-blue-300': currentAnswer == answer}">
           {{answer}}
         </AnswerButton>
       </template>
     </section>
     <section class="flex items-center space-x-2 mt-10">
-      <ButtonBluish @click="state--" :disabled="state == 0">{{$t('Back')}}</ButtonBluish>
-      <ButtonPinkle class="inline-block" @click="$toast.warning($t('Please select an answer before continue'))" v-if="!canStartNext">{{$t('Next')}}</ButtonPinkle>
+      <ButtonBluish @click="state--" v-if="state !== 0 && completedCount !== answers.length">{{$t('Back')}}</ButtonBluish>
+      <ButtonPinkle class="inline-block" @click="$toast.warning($t('Please select an answer before continue'))" v-if="!canStartNext && !onlyBack">{{$t('Next')}}</ButtonPinkle>
       <ButtonPinkle v-else-if="state+1 !== questions?.length" @click="state++" :disabled="!canStartNext">{{$t('Next')}}</ButtonPinkle>
       <ButtonGreenish @click="showSubmitModal = true" v-else-if="completedCount == answers.length">{{$t('Submit')}}</ButtonGreenish>
-      <ButtonGreenish v-else @click="$toast.warning($t('Please select an answer before continue'))">{{$t('Submit')}}</ButtonGreenish>
     </section>
   </GuestLayout>
   <AreYouSureModal
-      :show="showSubmitModal"
+      v-if="showSubmitModal"
       @close="showSubmitModal = false"
-      @submit="submit"
+      :answers="answers as string[]"
+      :answerReference="answerQuestionReference"
   />
 </template>
 
@@ -43,38 +43,40 @@ import ButtonGreenish from "@/components/buttons/ButtonGreenish.vue";
 import AreYouSureModal from "@/components/quiz/AreYouSureModal.vue";
 import {computed, onBeforeMount, ref} from "vue";
 import type {Ref} from "vue";
+import {shuffleArray} from "@/scripts/helpers/shuffle";
 
 const props = defineProps<{
   questions: Array<Question>
 }>()
 
 // refs
+const shuffledQuestions = ref([]) as Ref<Array<Question>>
 const answers = ref([]) as Ref<Array<string|null>>
 const state = ref(0)
 const showSubmitModal = ref(false)
+const answerQuestionReference = ref([]) as Ref<Array<number>>
 
 // getters
-const currentQuestion = computed(() => props.questions[state.value])
+const currentQuestion = computed(() => shuffledQuestions.value[state.value])
 const currentAnswer = computed(() => answers.value[state.value] !== null ? answers.value[state.value] : false)
 const canStartNext = computed(() => answers.value[state.value] != null)
 const completedCount = computed(() => answers.value.filter((v) => v != null).length)
+const onlyBack = computed(() => state.value+1 == shuffledQuestions.value.length)
 
 // setters
-const addAnswer = (answer: string) => {
+const addAnswer = (answer: string, qRef: number) => {
   if(answers.value[state.value] == answer) {
+    answerQuestionReference.value[state.value] = -1 // set an invalid id
     answers.value[state.value] = null
   } else {
+    answerQuestionReference.value[state.value] = qRef
     answers.value[state.value] = answer
   }
-  console.log(answers.value, answer, state.value, answers.value.keys())
 }
 
 // actions
-const submit = () => {
-  console.log(answers.value)
-}
-
 onBeforeMount(() => {
+  shuffledQuestions.value = shuffleArray(props.questions)
   for(let i = 0; i < props.questions.length; i++) {
     answers.value[i] = null
   }

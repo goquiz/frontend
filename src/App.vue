@@ -5,7 +5,11 @@ import {useLoadingStore} from "@/stores/loading";
 import Loader from "@/components/Loader.vue";
 import GuestLayout from "@/components/layouts/GuestLayout.vue";
 import TermsModal from "@/components/terms/TermsModal.vue";
-import {ref, watch} from "vue";
+import {onMounted, ref, watch} from "vue";
+import ServerFault from "@/components/ServerFault.vue";
+import axios from "@/scripts/axios";
+import {routePath} from "@/scripts/axios/routes";
+import type {WindowFetched} from "@/types/windowFetched";
 
 const route = useRoute()
 const loadingStore = useLoadingStore()
@@ -21,6 +25,21 @@ watch(route, (r: RouteLocationNormalized) => {
 })
 
 const isTermsPage = ref(false)
+const serverError = ref(false)
+
+const load = async () => {
+  serverError.value = false
+  let res
+  try {
+    res = await axios.get(routePath('appInfo'))
+  } catch(e: unknown) {
+    serverError.value = true
+    return
+  }
+  window.config.FETCHED = res.data as WindowFetched
+}
+
+onMounted(load)
 </script>
 
 <template>
@@ -35,6 +54,7 @@ const isTermsPage = ref(false)
     <Loader/>
   </GuestLayout>
   <TermsModal v-if="!isTermsAccepted && !isTermsPage" @accept="acceptTerms" />
+  <ServerFault v-if="serverError || loadingStore.serverUnavalible" @retry="load" />
 </template>
 
 <style>

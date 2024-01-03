@@ -15,6 +15,8 @@ const routes: {[index: string]: string} = {
     'quiz.host.activity': '/quiz/:0/hosts/:1/activity',
     'play.info': '/play/:0/info',
     'play': '/play/:0',
+    // info
+    appInfo: '/',
 }
 
 const routePath = (route: string, params: Array<string|number> = []) => {
