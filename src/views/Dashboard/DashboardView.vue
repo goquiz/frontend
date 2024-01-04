@@ -7,7 +7,7 @@
    </Widget>
     <Widget class="!text-left">
       <h3 class="fontMitr text-3xl">{{$t('Completed Quizzes')}}</h3>
-      <ButtonPinkle class="mt-3">{{$t('All')}}</ButtonPinkle>
+      <ButtonPinkle to="/dashboard/completed" class="mt-3">{{$t('All')}}</ButtonPinkle>
     </Widget>
   </AuthLayout>
   <NewQuizModal :show="showModal" @close="showModal = false" />
