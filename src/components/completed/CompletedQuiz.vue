@@ -4,7 +4,7 @@
     <div class="bg-login-input px-3 py-2 rounded-xl flex space-x-2 my-2">
       <UserProfileImage :profile-image="completed.quiz.user.profile_image_url" :username="completed.quiz.user.username" />
       <p class="text-sm my-auto">
-        <span class="fontFredoka text-gray-300">{{$t('by')}}</span><br/>
+        <span class="fontFredoka text-gray-300">{{$t('Quiz by')}}</span><br/>
         {{completed.quiz.user.username.capitalize()}}
       </p>
     </div>

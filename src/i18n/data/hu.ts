@@ -126,5 +126,9 @@ export default {
   Close: 'Bezárás',
   'Correct answer': 'Helyes válasz',
   'Wrong answer that is selected': 'Hibás válasz, amit választottál',
-  'Correct answer if a wrong selected': 'A helyes válasz, ha rosszat választottál'
+  'Correct answer if a wrong selected': 'A helyes válasz, ha rosszat választottál',
+  'Quiz by': 'Létrehozta',
+  'Load more': 'Továbbiak betöltése',
+  'No submissions yet.': 'Jelenleg egy kvízt sem töltöttél ki.',
+  'No more results.': 'Nincs több találat.',
 }
