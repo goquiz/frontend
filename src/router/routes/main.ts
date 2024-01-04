@@ -11,6 +11,8 @@ import QuizHosts from "@/views/Dashboard/QuizHosts.vue";
 import WelcomeView from "@/views/WelcomeView.vue";
 import TermsView from "@/views/Terms/TermsView.vue";
 import PrivacyView from "@/views/Terms/PrivacyView.vue";
+import CompletedQuizzesView from "@/views/Dashboard/CompletedQuizzesView.vue";
+import CompletedQuizView from "@/views/Dashboard/CompletedQuizView.vue";
 
 export default [
   {
@@ -73,6 +75,22 @@ export default [
     path: '/dashboard/quizzes/:id/hosts',
     name: 'dashboard.quizzes.hosts',
     component: QuizHosts,
+    meta: {
+      auth: guard.ACCESS_LOGIN
+    }
+  },
+  {
+    path: '/dashboard/completed',
+    name: 'dashboard.completed',
+    component: CompletedQuizzesView,
+    meta: {
+      auth: guard.ACCESS_LOGIN
+    }
+  },
+  {
+    path: '/dashboard/completed/:id',
+    name: 'dashboard.completed.specific',
+    component: CompletedQuizView,
     meta: {
       auth: guard.ACCESS_LOGIN
     }

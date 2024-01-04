@@ -17,6 +17,8 @@ const routes: {[index: string]: string} = {
     'play': '/play/:0',
     // info
     appInfo: '/',
+    completed: '/completed',
+    'completed.specific': '/completed/:0',
 }
 
 const routePath = (route: string, params: Array<string|number> = []) => {

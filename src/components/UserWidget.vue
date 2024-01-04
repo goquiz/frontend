@@ -1,14 +1,7 @@
 <template>
    <nav class="top-0 z-30 w-full px-2">
      <div class="w-full px-3 py-3 fontPoppins bg-widget max-w-md mx-auto my-2 rounded-xl flex items-center">
-       <img v-if="profileImage !== false"
-           :src="profileImage"
-           alt="Profile Image"
-           class="w-12 h-12 rounded-xl"
-       />
-       <div v-else class="no-select w-12 h-12 rounded-xl flex items-center justify-center text-2xl fontMitr bg-gradient-to-r from-indigo-400 to-blue-400">
-         {{username.substring(0,1).toUpperCase()}}
-       </div>
+       <UserProfileImage :profile-image="profileImage" :username="username"/>
        <div class="ml-2">
          <h3 class="text-sm ">
            <span class="text-gray-300 fontFredoka">{{ $t('Hi') }}</span>,<br/>
@@ -33,6 +26,7 @@ import {useAuthStore} from "@/stores/auth";
 import {computed, ref} from "vue";
 import Menu from "@/components/icons/Menu.vue";
 import UserWidgetMenu from "@/components/UserWidgetMenu.vue";
+import UserProfileImage from "@/components/UserProfileImage.vue";
 
 const auth = useAuthStore()
 const username = computed(() => auth.user?.username || 'Unknown')

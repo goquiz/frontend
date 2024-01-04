@@ -118,4 +118,13 @@ export default {
   // Navbar
   About: 'Rólunk',
   Logout: 'Kijelentkezés',
+
+  // Completed quizzes
+  Stats: 'Statisztika',
+  'Correct answers': 'Helyes válaszok',
+  'Show questions and answers': 'Kérdések és válaszok megjelenítése',
+  Close: 'Bezárás',
+  'Correct answer': 'Helyes válasz',
+  'Wrong answer that is selected': 'Hibás válasz, amit választottál',
+  'Correct answer if a wrong selected': 'A helyes válasz, ha rosszat választottál'
 }

@@ -74,8 +74,8 @@ const submit = async (t: unknown) => {
     return
   }
 
-  if(res.status == 200) {
-    await router.push('/dashboard/finished')
+  if(res.status == 200 && res.data && res.data?.quiz_id) {
+    await router.push('/dashboard/completed/' + res.data.quiz_id as string)
   } else {
     toast.error(i18n.t('error.unknown'))
     await router.push('/dashboard')
