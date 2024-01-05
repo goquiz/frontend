@@ -20,7 +20,7 @@
       <Link to="/login">{{ $t('Login') }}</Link>
     </div>
   </GuestLayout>
-  <Modal :show="registeredModal" @click="registeredModal = false" :disable-close="true">
+  <Modal v-if="false" :show="registeredModal" @click="registeredModal = false" :disable-close="true">
     <h2 class="text-2xl fontMitr mb-2">{{$t('Successfully registered')}}</h2>
     <p class="text-left">
       {{ $t('Just a few more steps, we have sent a verification email, follow the instructions, and we\'ll meet.') }}
@@ -86,6 +86,7 @@ export default defineComponent({
       this.email = ''
       this.registeredModal = true
       this.processing = false
+      await this.$router.push('/home')
     }
   }
 })
