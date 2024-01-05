@@ -19,6 +19,7 @@ const routes: {[index: string]: string} = {
     appInfo: '/',
     completed: '/completed',
     'completed.specific': '/completed/:0',
+    'host.completions': '/completed/host/:0',
 }
 
 const routePath = (route: string, params: Array<string|number> = []) => {

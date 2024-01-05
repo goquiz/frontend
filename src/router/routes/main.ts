@@ -7,12 +7,13 @@ import EditQuizQuestions from "@/views/Dashboard/EditQuizQuestions.vue";
 import PlayQuiz from "@/views/Play/PlayQuiz.vue";
 import MyQuizzes from "@/views/Dashboard/MyQuizzes.vue";
 import BeforePlay from "@/views/Play/BeforePlay.vue";
-import QuizHosts from "@/views/Dashboard/QuizHosts.vue";
+import QuizHosts from "@/views/Dashboard/Hosts/QuizHosts.vue";
 import WelcomeView from "@/views/WelcomeView.vue";
 import TermsView from "@/views/Terms/TermsView.vue";
 import PrivacyView from "@/views/Terms/PrivacyView.vue";
-import CompletedQuizzesView from "@/views/Dashboard/CompletedQuizzesView.vue";
-import CompletedQuizView from "@/views/Dashboard/CompletedQuizView.vue";
+import CompletedQuizzesView from "@/views/Dashboard/Completions/CompletedQuizzes.vue";
+import CompletedQuizView from "@/views/Dashboard/Completions/CompletedQuiz.vue";
+import QuizResults from "@/views/Dashboard/Hosts/QuizResults.vue";
 
 export default [
   {
@@ -75,6 +76,14 @@ export default [
     path: '/dashboard/quizzes/:id/hosts',
     name: 'dashboard.quizzes.hosts',
     component: QuizHosts,
+    meta: {
+      auth: guard.ACCESS_LOGIN
+    }
+  },
+  {
+    path: '/dashboard/quizzes/:id/hosts/:hostId/results',
+    name: 'dashboard.quizzes.results',
+    component: QuizResults,
     meta: {
       auth: guard.ACCESS_LOGIN
     }
