@@ -48,6 +48,7 @@ export default {
   'Danger Zone': 'Veszélyzóna',
   Delete: 'Törlés',
   Retain: 'Megtartás',
+  'You will lose all data connected to this': 'Elveszíted az összes ehhez kapcsolódó tartalmat is',
 
   // About us, How to
   'About us': 'Rólunk',
@@ -129,6 +130,9 @@ export default {
   'Correct answer if a wrong selected': 'A helyes válasz, ha rosszat választottál',
   'Quiz by': 'Létrehozta',
   'Load more': 'Továbbiak betöltése',
-  'No submissions yet.': 'Jelenleg egy kvízt sem töltöttél ki.',
+  'No submissions yet.': 'Jelenleg egy kitöltés sincsen.',
   'No more results.': 'Nincs több találat.',
+
+  // QuizResults
+  'Completed by': 'Kitöltötte:',
 }

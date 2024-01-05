@@ -30,7 +30,7 @@
           <ButtonGreenish :isLoading="isActivityProcessing" @click="changeActivity(host)" v-else>
             {{$t('Change to active')}}
           </ButtonGreenish>
-          <ButtonBluish :to="`/dashboard/quizzes/${route.params.id as string}/hosts/${host.id}/completions`" class="mt-2">
+          <ButtonBluish :to="`/dashboard/quizzes/${route.params.id as string}/hosts/${host.id}/results`" class="mt-2">
             {{$t('View completions')}}
           </ButtonBluish>
         </div>

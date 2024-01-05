@@ -2,6 +2,9 @@
 import './assets/styles/main.css'
 import 'vue-toastification/dist/index.css'
 import 'tippy.js/dist/tippy.css'
+// modifications
+import './assets/styles/modified/toast.css'
+import './assets/styles/modified/tippy.css'
 
 // packages
 import { createApp } from 'vue'
