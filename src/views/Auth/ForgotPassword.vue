@@ -2,12 +2,14 @@
   <GuestLayout>
     <h1 class="text-4xl fontMitr">{{$t('Forgot password?')}}</h1>
     <hr class="my-5 border-none h-2 bg-gradient-to-r from-pink-400 via-magenta-400 to-violet-500 rounded" />
-    <div class="my-2">
-      <AuthInputComponent :placeholder="$t('Username or email address')" class="my-1" />
-    </div>
-    <ButtonPinkle>
-      {{$t('Reset')}}
-    </ButtonPinkle>
+    <form @submit.prevent>
+      <div class="my-2">
+        <AuthInputComponent :placeholder="$t('Username or email address')" class="my-1" />
+      </div>
+      <ButtonPinkle>
+        {{$t('Reset')}}
+      </ButtonPinkle>
+    </form>
     <div class="mt-3 text-left">
       <span>{{$t('Do you remember it?')}}&nbsp;</span>
       <Link to="/login">{{$t('Login')}}</Link>

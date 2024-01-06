@@ -17,12 +17,7 @@
               <span>{{$t('Open-source repository')}}</span>
             </span>
           </ButtonRootLink>
-          <ButtonRootLink target="_blank" to="https://discord.gg/2BtaJker6S" class="from-[#5865F2] to-[#5865F2] mt-2 md:mt-0">
-            <span class="flex items-center justify-center space-x-3">
-              <Discord/>
-              <span>{{$t('Join our community')}}</span>
-            </span>
-          </ButtonRootLink>
+          <DiscordButton title="Join our community" />
         </div>
       </div>
     </div>
@@ -32,7 +27,7 @@
 <script setup lang="ts">
 import Github from "@/components/icons/Github.vue";
 import ButtonRootLink from "@/components/buttons/ButtonRootLink.vue";
-import Discord from "@/components/icons/Discord.vue";
+import DiscordButton from "@/components/buttons/DiscordButton.vue";
 </script>
 
 <style scoped>

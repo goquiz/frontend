@@ -2,7 +2,7 @@
   <GuestLayout>
     <h1 class="text-4xl fontMitr">{{$t('Register')}}</h1>
     <hr class="my-5 border-none h-2 bg-gradient-to-r from-pink-400 via-magenta-400 to-violet-500 rounded" />
-   <form v-on:submit.prevent>
+   <form ref="form" v-on:submit.prevent>
      <div class="my-2">
        <AuthInputComponent :disabled="processing" v-model.lazy="username" type="text" :placeholder="$t('Username')" class="my-1" />
        <InputError v-if="errors.username" :error="errors.username" />
@@ -11,7 +11,7 @@
        <AuthInputComponent :disabled="processing" v-model.lazy="password" type="password" :placeholder="$t('Pasword')" class="my-1" />
        <InputError v-if="errors.password" :error="errors.password" />
      </div>
-     <ButtonPinkle @click="submit" :isLoading="processing">
+     <ButtonPinkle @click="submitFake" :isLoading="processing">
        {{$t('Register')}}
      </ButtonPinkle>
    </form>
@@ -20,10 +20,11 @@
       <Link to="/login">{{ $t('Login') }}</Link>
     </div>
   </GuestLayout>
-  <Modal v-if="false" :show="registeredModal" @click="registeredModal = false" :disable-close="true">
+  <Modal :show="registeredModal" @click="registeredModal = false" :disable-close="true">
     <h2 class="text-2xl fontMitr mb-2">{{$t('Successfully registered')}}</h2>
     <p class="text-left">
-      {{ $t('Just a few more steps, we have sent a verification email, follow the instructions, and we\'ll meet.') }}
+      {{ $t('Just a few more steps, we have sent a verification email, follow the instructions, and we\'ll meet.') }}<br/>
+      {{$t('Don\'t forget to check the spam folder as well.')}}
     </p>
     <ButtonBluish @click="registeredModal = false" class="mt-2">Cool ;)</ButtonBluish>
   </Modal>
@@ -85,8 +86,10 @@ export default defineComponent({
       this.password = ''
       this.email = ''
       this.registeredModal = true
-      this.processing = false
-      await this.$router.push('/home')
+      this.processing = false;
+    },
+    submitFake() {
+      (this.$refs.form as HTMLFormElement).reset()
     }
   }
 })

@@ -9,7 +9,7 @@
          </h3>
        </div>
        <div class="ml-auto mr-2">
-         <button @click="$toast.info($t('Soon...'))" class="transition duration-150 p-3 bg-main-from hover:bg-main-to rounded-xl">
+         <button @click="$toast.info($t('Soon') + '...')" class="transition duration-150 p-3 bg-main-from hover:bg-main-to rounded-xl">
            <Settings/>
          </button>
          <button @click="menuOpen = !menuOpen" class="ml-2 transition duration-150 p-3 bg-main-from hover:bg-main-to rounded-xl">
