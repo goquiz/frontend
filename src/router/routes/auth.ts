@@ -1,7 +1,8 @@
 import guard from '@/router/guard'
 import LoginView from '@/views/Auth/LoginView.vue'
 import RegisterView from "@/views/Auth/RegisterView.vue";
-import ForgotPassword from "@/views/Auth/ForgotPassword.vue";
+import EmailVerification from "@/views/Auth/EmailVerification.vue";
+import ResetPassword from "@/views/Auth/ResetPassword.vue";
 
 export default [
   {
@@ -23,9 +24,25 @@ export default [
   {
     path: '/forgot-password',
     name: 'auth.forgot-password',
-    component: ForgotPassword,
+    component: ResetPassword,
     meta: {
       auth: guard.ACCESS_ALL,
     }
-  }
+  },
+  {
+    path: '/email-verification/:token',
+    name: 'auth.email-verification',
+    component: EmailVerification,
+    meta: {
+      auth: guard.ACCESS_ALL,
+    }
+  },
+  {
+    path: '/reset-password/:token',
+    name: 'auth.reset-password',
+    component: ResetPassword,
+    meta: {
+      auth: guard.ACCESS_ALL,
+    }
+  },
 ]

@@ -20,6 +20,8 @@ const routes: {[index: string]: string} = {
     completed: '/completed',
     'completed.specific': '/completed/:0',
     'host.completions': '/completed/host/:0',
+    // email
+    "email-verification": "/email-verification/:0"
 }
 
 const routePath = (route: string, params: Array<string|number> = []) => {
