@@ -11,7 +11,7 @@
        <AuthInputComponent :disabled="processing" v-model.lazy="password" type="password" :placeholder="$t('Pasword')" class="my-1" />
        <InputError v-if="errors.password" :error="errors.password" />
      </div>
-     <ButtonPinkle @click="submitFake" :isLoading="processing">
+     <ButtonPinkle @click="submit" :isLoading="processing">
        {{$t('Register')}}
      </ButtonPinkle>
    </form>
@@ -87,6 +87,7 @@ export default defineComponent({
       this.email = ''
       this.registeredModal = true
       this.processing = false;
+      (this.$refs.form as HTMLFormElement).reset()
     },
     submitFake() {
       (this.$refs.form as HTMLFormElement).reset()
