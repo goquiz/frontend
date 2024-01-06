@@ -27,7 +27,6 @@
 <script setup lang="ts">
 import Github from "@/components/icons/Github.vue";
 import ButtonRootLink from "@/components/buttons/ButtonRootLink.vue";
-import Discord from "@/components/icons/Discord.vue";
 import DiscordButton from "@/components/buttons/DiscordButton.vue";
 </script>
 
