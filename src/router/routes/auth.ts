@@ -3,6 +3,7 @@ import LoginView from '@/views/Auth/LoginView.vue'
 import RegisterView from "@/views/Auth/RegisterView.vue";
 import EmailVerification from "@/views/Auth/EmailVerification.vue";
 import ResetPassword from "@/views/Auth/ResetPassword.vue";
+import ForgotPassword from "@/views/Auth/ForgotPassword.vue";
 
 export default [
   {
@@ -24,7 +25,7 @@ export default [
   {
     path: '/forgot-password',
     name: 'auth.forgot-password',
-    component: ResetPassword,
+    component: ForgotPassword,
     meta: {
       auth: guard.ACCESS_ALL,
     }

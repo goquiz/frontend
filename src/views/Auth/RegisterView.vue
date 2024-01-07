@@ -11,7 +11,7 @@
        <AuthInputComponent :disabled="processing" v-model.lazy="password" type="password" :placeholder="$t('Pasword')" class="my-1" />
        <InputError v-if="errors.password" :error="errors.password" />
      </div>
-     <ButtonPinkle @click="submit" :isLoading="processing">
+     <ButtonPinkle @click="captcha = true" :isLoading="processing">
        {{$t('Register')}}
      </ButtonPinkle>
    </form>
@@ -29,6 +29,7 @@
     <ButtonBluish @click="registeredModal = false" class="mt-2">Cool ;)</ButtonBluish>
   </Modal>
   <BottomLinks/>
+  <CaptchaModal v-if="captcha" :show="captcha" @verified="submit" />
 </template>
 
 <script lang='ts'>
@@ -45,10 +46,13 @@ import Modal from "@/components/modal/Modal.vue";
 import ButtonBluish from "@/components/buttons/ButtonBluish.vue";
 import simpleMessageHelper from "@/scripts/errorTranslator/simpleMessageHelper";
 import BottomLinks from "@/components/about/BottomLinks.vue";
+import CaptchaModal from "@/components/modal/CaptchaModal.vue";
 
 export default defineComponent({
-  // eslint-disable-next-line vue/no-reserved-component-names
-  components: {BottomLinks, ButtonBluish, Modal, InputError, GuestLayout, ButtonPinkle, AuthInputComponent, Link},
+  components: {
+    CaptchaModal,
+    // eslint-disable-next-line vue/no-reserved-component-names
+    BottomLinks, ButtonBluish, Modal, InputError, GuestLayout, ButtonPinkle, AuthInputComponent, Link},
   data() {
     return {
       username: '',
@@ -57,16 +61,20 @@ export default defineComponent({
       errors: {} as TInputError,
       processing: false,
       registeredModal: false,
+      captcha: false,
     };
   },
   methods: {
-    async submit() {
+    async submit(hcaptcha_token: string) {
+      this.errors = {}
+      this.captcha = false
       this.processing = true
       try {
         await this.$http.post(this.api_route('auth.register'), {
           username: this.username,
           email: this.email,
-          password: this.password
+          password: this.password,
+          hcaptcha_token
         })
       } catch(e: unknown) {
         console.log(e)
@@ -89,9 +97,6 @@ export default defineComponent({
       this.processing = false;
       (this.$refs.form as HTMLFormElement).reset()
     },
-    submitFake() {
-      (this.$refs.form as HTMLFormElement).reset()
-    }
   }
 })
 </script>

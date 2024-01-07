@@ -21,7 +21,9 @@ const routes: {[index: string]: string} = {
     'completed.specific': '/completed/:0',
     'host.completions': '/completed/host/:0',
     // email
-    "email-verification": "/email-verification/:0"
+    "email-verification": "/email-verification/:0",
+    "forgot-password": "/reset-password/request",
+    "reset-password": "/reset-password/change/:0",
 }
 
 const routePath = (route: string, params: Array<string|number> = []) => {

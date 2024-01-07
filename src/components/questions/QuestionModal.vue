@@ -1,7 +1,7 @@
 <template>
   <Modal :show="show" @close="$emit('close')">
     <h3 class="text-2xl fontMitr mb-2">
-      {{ question ? $t('Edit question') : $t('Add a new question') }}
+      {{ question ? $t('Edit question') : $t('Add new question') }}
     </h3>
     <div class="text-left">
       <QuestionForm :errors="errors" :question="question" @submit="submit" :processing="processing" />
