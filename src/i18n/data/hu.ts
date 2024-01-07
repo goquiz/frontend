@@ -49,6 +49,8 @@ export default {
   Delete: 'Törlés',
   Retain: 'Megtartás',
   'You will lose all data connected to this': 'Elveszíted az összes ehhez kapcsolódó tartalmat is',
+  'You have no quizzes yet': 'Jelenleg nincsenek kvízeid',
+  'Create your first': 'Hozd létre az elsőt',
 
   // About us, How to
   'About us': 'Rólunk',
@@ -65,6 +67,8 @@ export default {
   'Username or email address': 'Felhasználónév vagy email cím',
   Reset: 'Visszaállítás',
   'Do you remember it?': 'Mégis emlékszel rá?',
+  'Reset password': 'Jelszó visszaállítása',
+  'New password': 'Új jelszó',
 
   // Questions page
   Questions: 'Kérdések',
@@ -74,6 +78,8 @@ export default {
   Solution: 'Megoldás',
   'Add new': 'Új hozzáadása',
   'Select an answer': 'Kérlek válaszd ki a helyes választ',
+  'Add new question': 'Új kérdés létrehozása',
+  'Add your first question': 'Add hozzá az első kérdésed',
 
   // Loader
   'Just a moment': 'Egy pillanat',

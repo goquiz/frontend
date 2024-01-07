@@ -9,7 +9,7 @@
         <AuthInputComponent :disabled="processing" v-model="password" :placeholder="$t('Password')" type="password" class="my-1" />
         <InputError v-if="errors.password" :error="errors.password" />
       </div>
-      <ButtonPinkle :isLoading="processing" @click="submit">
+      <ButtonPinkle :isLoading="processing" @click="captcha = true">
         {{$t('Login')}}
       </ButtonPinkle>
     </form>
@@ -20,6 +20,7 @@
     </div>
   </GuestLayout>
   <BottomLinks/>
+  <CaptchaModal v-if="captcha" :show="captcha" @verified="submit" />
 </template>
 
 <script lang='ts'>
@@ -37,6 +38,7 @@ import translator from "@/scripts/errorTranslator";
 import type {TInputError} from "@/scripts/errorTranslator";
 import simpleMessageHelper from "@/scripts/errorTranslator/simpleMessageHelper";
 import BottomLinks from "@/components/about/BottomLinks.vue";
+import CaptchaModal from "@/components/modal/CaptchaModal.vue";
 
 export default defineComponent({
   setup() {
@@ -50,9 +52,11 @@ export default defineComponent({
         password: '',
         processing: false,
         errors: {} as TInputError,
+        captcha: false,
       }
   },
   components: {
+    CaptchaModal,
     BottomLinks,
     InputError,
     GuestLayout,
@@ -62,13 +66,16 @@ export default defineComponent({
     Link,
   },
   methods: {
-    async submit() {
+    async submit(hcaptcha_token: string) {
+      this.errors = {}
+      this.captcha = false
       this.processing = true
       let res: AxiosResponse
       try {
         res = await this.$http.post(this.api_route('auth.login'), {
           username: this.username,
-          password: this.password
+          password: this.password,
+          hcaptcha_token
         })
       } catch(e: unknown) {
         if(e instanceof AxiosError && e.response) {
