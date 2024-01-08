@@ -8,7 +8,7 @@
         <router-link class="text-blue-400" to="/terms">{{$t('Terms and conditions')}}</router-link><br/>
         <router-link class="text-blue-400" to="/privacy">{{$t('Privacy Policy')}}</router-link>
       </p>
-      <ButtonBluish class="mt-2" @click="$emit('accept')">{{$t('I understood and I accept')}}</ButtonBluish>
+      <ButtonBluish class="mt-2" @click="$emit('accept')">{{$t('I understand and I accept')}}</ButtonBluish>
     </div>
   </Modal>
 </template>

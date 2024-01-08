@@ -26,7 +26,7 @@
       {{ $t('Just a few more steps, we have sent a verification email, follow the instructions, and we\'ll meet.') }}<br/>
       {{$t('Don\'t forget to check the spam folder as well.')}}
     </p>
-    <ButtonBluish @click="registeredModal = false" class="mt-2">Cool ;)</ButtonBluish>
+    <ButtonBluish @click="registeredModal = false" class="mt-2">{{$t('Cool')}} ;)</ButtonBluish>
   </Modal>
   <BottomLinks/>
   <CaptchaModal v-if="captcha" :show="captcha" @verified="submit" />
