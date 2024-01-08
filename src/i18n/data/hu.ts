@@ -69,6 +69,11 @@ export default {
   'Do you remember it?': 'Mégis emlékszel rá?',
   'Reset password': 'Jelszó visszaállítása',
   'New password': 'Új jelszó',
+  'Verify that you are not a robot': 'Bizonyítsd be, hogy nem vagy robot',
+  'Successfully registered': 'Sikeres regisztráció',
+  'Just a few more steps, we have sent a verification email, follow the instructions, and we\'ll meet.': 'Már csak néhány lépés, küldtünk egy ellenőrző e-mailt, kövesse az utasításokat, és találkozunk.',
+  'Don\'t forget to check the spam folder as well.': 'Ne felejtse el ellenőrizni a spam mappát is.',
+  'Cool': 'Szuper',
 
   // Questions page
   Questions: 'Kérdések',
@@ -116,7 +121,7 @@ export default {
   'Accept our terms and conditions before using our product.': 'A termék használata előtt fogadja el az általános szerződési feltételeinket.',
   'Direct links': 'Közvetlen hivatkozások',
   'Privacy Policy': 'Adatvédelmi irányelvek',
-  'I understood and I accept': 'Megértettem és elfogadom',
+  'I understand and I accept': 'Megértettem és elfogadom',
 
   // Not found page
   'This page couldn\'t be found': 'A keresett oldal nem található',

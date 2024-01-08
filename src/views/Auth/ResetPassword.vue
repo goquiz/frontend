@@ -5,7 +5,7 @@
     <form @submit.prevent>
       <div class="my-2">
         <AuthInputComponent :disabled="processing" v-model.lazy="password" :placeholder="$t('New password')" class="my-1" type="password" />
-        <InputError v-if="errors.username" :error="errors.password" />
+        <InputError v-if="errors.password" :error="errors.password" />
       </div>
       <ButtonPinkle :isLoading="processing" @click="submit">
         {{$t('Reset')}}
